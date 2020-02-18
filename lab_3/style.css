@@ -7,7 +7,7 @@ html, body {
 
 html {
   font-size: 10px;
-  background-color: #a9a9a9;
+  background-color: #000033;
 }
 
 body {
@@ -18,10 +18,17 @@ body {
 
 /* || typography */
 
-h1, h2, h3 {
-  font-family: 'Cinzel Decorative', cursive;
+h1 {
+ font-family: "Press Start 2P", cursive;
+ font-weight: bolder;
+}
+
+h2, h3 {
+  font-family: 'Press Start 2P', cursive;
+  font-weight: lighter;
   color: #2a2a2a;
 }
+
 
 p, input, li {
   font-family: 'Roboto Condensed', sans-serif;
