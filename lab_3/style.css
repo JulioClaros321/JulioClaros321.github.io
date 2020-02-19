@@ -19,13 +19,14 @@ body {
 /* || typography */
 
 h1 {
- font-family: "Press Start 2P", cursive;
- font-weight: bolder;
+ font-family: "Allan", cursive;
+ font-weight: 400;
+ font-weight: 700;
 }
 
 h2, h3 {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: lighter;
+  font-family: 'Allan', cursive;
+  font-weight: 400;
   color: #2a2a2a;
 }
 
