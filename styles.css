@@ -41,11 +41,13 @@ body {
 .container {
   display:flex;
   max-width: 960px;
+  flex-wrap: wrap;
 }
 
 .container > div{
   display:flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .one
