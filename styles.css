@@ -2,12 +2,6 @@ body {
   background-color: pink;
 }
 
-@media screen and (max-width: 600px) {
-  .container {
-    width: 100%;
-  }
-}
-
 .header { 
   display: flex;
   align-items: center;
@@ -22,8 +16,8 @@ body {
 .logo { 
   border: 1px #ccc solid;
   flex: 1/2;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
 }
 
 .header h1 { 
@@ -81,10 +75,16 @@ body {
 
 .two
 {
+  display: flex;
   padding-left: 10px;
   background-color: white;
   flex-direction: column;
   flex-basis: 2/3;
+}
+
+.two p {
+  display: flex;
+  max-width: 640px;
 }
 
 
