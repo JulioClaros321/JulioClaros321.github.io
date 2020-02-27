@@ -67,8 +67,11 @@ body {
 }
 
 .one p {
-  border: 1px gold solid;
   background-color: white;
+  padding-bottom: 40px;
+  max-height: 100%;
+  text-align: center;
+  padding-top: 10px;
 }
 
 
@@ -76,17 +79,12 @@ body {
 .two
 {
   display: flex;
-  padding-left: 10px;
+  padding: 30px;
   background-color: white;
   flex-direction: column;
   flex-basis: 2/3;
+  max-width: 10000px;
 }
-
-.two p {
-  display: flex;
-  max-width: 640px;
-}
-
 
 
 /* 
