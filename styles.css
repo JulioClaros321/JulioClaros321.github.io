@@ -2,6 +2,12 @@ body {
   background-color: pink;
 }
 
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
 .header { 
   display: flex;
   align-items: center;
