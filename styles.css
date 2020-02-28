@@ -1,5 +1,5 @@
 html, body { 
-  background-color: pink;
+  background-color: #FFCEBE;
   overflow-x: hidden;
 }
 
@@ -20,6 +20,7 @@ html, body {
 
 .header { 
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   text-align: center;
@@ -28,14 +29,14 @@ html, body {
   padding: 10px;
   font-family: "Press Start 2P";
   flex-direction: row;
-  overflow-y: hidden;
+
 }
 
 .logo { 
-  border: 1px #ccc solid;
   flex: 1/2;
   height: 200px;
   width: 200px;
+  margin-right: 20px;
 }
 
 .header h1 { 
@@ -49,7 +50,6 @@ html, body {
 .wrapper { 
   display: flex;
   margin-top: 15px;
-  border: 1px #ccc solid;
   justify-content: center;
   flex-flow: row;
 }
@@ -109,10 +109,12 @@ html, body {
 .two h2 { 
   font-family: "Odibee Sans";
   font-size: 40px;
+  font-style: initial;
 }
 
 .jobtitle {
   font-weight: 900;
+  font-style: italic;
 }
 
 .jobdesc {
