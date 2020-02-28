@@ -1,5 +1,6 @@
-body { 
+html, body { 
   background-color: pink;
+  overflow-x: hidden;
 }
 
 
@@ -27,6 +28,7 @@ body {
   padding: 10px;
   font-family: "Press Start 2P";
   flex-direction: row;
+  overflow-y: hidden;
 }
 
 .logo { 
