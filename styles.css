@@ -2,6 +2,20 @@ body {
   background-color: pink;
 }
 
+@media screen and (max-width:1000px) {
+  .container {
+    justify-content: center;
+  }
+  .selectorBig{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
 .header { 
   display: flex;
   align-items: center;
