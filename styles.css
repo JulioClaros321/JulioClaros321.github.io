@@ -2,6 +2,7 @@ body {
   background-color: pink;
 }
 
+
 @media screen and (max-width:1000px) {
   .container {
     justify-content: center;
@@ -20,11 +21,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
-  height: auto;
+  text-align: center;
   flex-wrap: wrap;
   background-color: blueviolet;
   padding: 10px;
+  font-family: "Press Start 2P";
+  flex-direction: row;
 }
 
 .logo { 
@@ -36,19 +38,17 @@ body {
 
 .header h1 { 
   flex: 1/2;
-  margin-left: 2rem;
-  border: 1px #ccc solid;
-  font-size: 6rem;
+  margin-left: 1rem;
+  font-size: 3rem;
 }
+
 
 .wrapper { 
   display: flex;
   margin-top: 15px;
   border: 1px #ccc solid;
   justify-content: center;
-  flex-direction: row;
-  width: auto;
-  height: auto;
+  flex-flow: row;
 }
 
 
@@ -76,6 +76,7 @@ body {
   max-width: 320px;
   max-height: 100%;
   height: 300px;
+  width: 250;
   border: 1px black solid;
   border-radius: 4px;
 }
@@ -85,53 +86,36 @@ body {
   padding-bottom: 40px;
   max-height: 100%;
   text-align: center;
+  font-family: "Odibee Sans";
+  font-size: 25px;
   padding-top: 10px;
 }
 
 
 
-.two
-{
+
+.two {
   display: flex;
   padding: 30px;
   background-color: white;
   flex-direction: column;
   flex-basis: 2/3;
-  max-width: 10000px;
+  font-family: "Londrina Solid"
 }
 
-
-/* 
-.one { 
-  display: flex;
-  flex-direction: column;
-  border: 1px #ccc solid;
-  flex-basis: 33.33%;
-}
- */
-/*  
-
-.one img {
-  height: 20px;
-
+.two h2 { 
+  font-family: "Odibee Sans";
+  font-size: 40px;
 }
 
-/*  
-
-
-.two { 
-  display: flex;
-  border: 1px #ccc solid;
-  flex-direction: column;
-  background-color: white;
-  flex-grow: 1;
-  flex-basis: 66.66%;
+.jobtitle {
+  font-weight: 900;
 }
-*/
 
-/*.header img {
-  height: 300px;
-  width: 20%;
-  float: right;
+.jobdesc {
+  font-weight: 400;
 }
-*/
+
+.response {
+  font-weight: 300;
+}
