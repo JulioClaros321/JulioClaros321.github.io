@@ -24,7 +24,7 @@ paragraph.classList.add("para1");
 
 var sec_paragraph = document.createElement("p");
 var sec_text = document.createTextNode("The third character in my name is " +name[2].toUpperCase());
-var third_text = document.createTextNode("lio")
+var third_text = document.createTextNode("ros")
 sec_paragraph.appendChild(sec_text);
 sec_paragraph.classList.add("para2");
 sec_paragraph.appendChild(br)
