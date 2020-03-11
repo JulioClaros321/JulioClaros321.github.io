@@ -264,7 +264,59 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
-    console.log("List of countries in the world", countries);
+    
+
+    const myHeading = document.querySelector(".header");
+    myHeading.textContent = "Julio's List of Countries";
+    
+
+    var content = document.querySelector(".content");
+    var order_list = document.createElement("ol");
+    order_list.classList.add("countries");
+    content.appendChild(order_list)
+  
+  
+    
+
+    function random_countries() { 
+      let country_list = [];
+      let country;
+      let country25 = country_list.unique;
+
+
+
+
+
+      for (i = 0; i < 25; i++) {
+        country = countries[Math.floor(Math.random() * countries.length)];
+        country_list.push(country)
+    
+  
+      }
+      country_list.forEach(function (element) {
+        var newli = document.createElement("li");
+        var name = String(element.name);
+        var code = String(element.code).bold();
+        var text = document.createTextNode(code +" " +name)
+        newli.appendChild(text);
+        order_list.appendChild(newli);
+
+      })
+
+
+
+
+      console.log(country_list)
+
+
+  
+
+      
+    }
+
+    random_countries()
+    /*  console.log("List of countries in the world", countries);*/
+    
   </script>
 </body>
 
