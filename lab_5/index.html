@@ -10,7 +10,7 @@
   <div class="container">
     <div class="wrapper">
       <div class="header">Test JSON page</div>
-      <button class="activate">Click me to replace list
+      <button class="activate" onclick="random_countries()">Click me to replace list
         entries</button>
       <div class="content">
       </div>
@@ -270,52 +270,48 @@
     myHeading.textContent = "Julio's List of Countries";
     
 
+    
     var content = document.querySelector(".content");
     var order_list = document.createElement("ol");
     order_list.classList.add("countries");
     content.appendChild(order_list)
-  
-  
-    
+    random_countries()
 
     function random_countries() { 
       let country_list = [];
       let country;
-      let country25 = country_list.unique;
-
+      let country_num;
+      negative = countries.slice();
 
 
 
 
       for (i = 0; i < 25; i++) {
-        country = countries[Math.floor(Math.random() * countries.length)];
-        country_list.push(country)
-    
+        country_num = Math.floor(Math.random() * countries.length)
+        country = countries[country_num];
+        country_list.push(country);
+        delete negative[country_num]
   
       }
+      document.querySelector("ol").remove();
+      var order_list = document.createElement("ol");
+      order_list.classList.add("countries");
+      content.appendChild(order_list);
+
       country_list.forEach(function (element) {
         var newli = document.createElement("li");
         var name = String(element.name);
-        var code = String(element.code).bold();
+        var code = String(element.code);
         var text = document.createTextNode(code +" " +name)
         newli.appendChild(text);
         order_list.appendChild(newli);
 
       })
 
-
-
-
-      console.log(country_list)
-
-
-  
-
-      
+      console.log("Countries Not Logged", negative);
     }
 
-    random_countries()
-    /*  console.log("List of countries in the world", countries);*/
+
     
   </script>
 </body>
