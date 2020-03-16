@@ -17,8 +17,7 @@ h3 {
 .code {
   background-color: rgb(255, 231, 202);
   font-family: 'Courier New', Courier, monospace;
-  color: blue;
-  font-weight: bold;
+  color: dimgrey;
 }
 
 .container {

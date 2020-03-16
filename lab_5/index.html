@@ -302,8 +302,8 @@
         var newli = document.createElement("li");
         var name = String(element.name);
         var code = String(element.code);
-        var text = document.createTextNode(code +" " +name)
-        newli.appendChild(text);
+        let line = "<strong>" +code +"</strong> " +name;
+        newli.innerHTML = line
         order_list.appendChild(newli);
 
       })
