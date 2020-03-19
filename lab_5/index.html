@@ -279,9 +279,11 @@
 
     function random_countries() { 
       let country_list = [];
+      inverse = countries.slice();
+
       let country;
       let country_num;
-      negative = countries.slice();
+  
 
 
 
@@ -290,7 +292,7 @@
         country_num = Math.floor(Math.random() * countries.length)
         country = countries[country_num];
         country_list.push(country);
-        delete negative[country_num]
+        delete inverse[country_num]
   
       }
       country_list.sort();
@@ -300,16 +302,17 @@
       content.appendChild(order_list);
 
       country_list.forEach(function (element) {
-        var newli = document.createElement("li");
         var name = String(element.name);
         var code = String(element.code);
-        let line = "<strong>" +code +"</strong> " +name;
-        newli.innerHTML = line
-        order_list.appendChild(newli);
+
+        var table_row = document.createElement("li");
+        let table_line = "<strong>" +code +"</strong> " +name;
+        table_row.innerHTML = table_line
+        order_list.appendChild(table_row);
 
       })
 
-      console.log("Countries Not Logged", negative);
+      console.log("Countries Not Logged", inverse);
     }
 
 
