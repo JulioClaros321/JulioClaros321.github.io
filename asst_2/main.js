@@ -23,4 +23,9 @@ btn.onclick = function() {
         btn.textContent = 'lighten';
         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
       } 
-     
+      else {
+        btn.setAttribute('class','dark');
+        btn.textContent = 'darken';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+      }
+    }
