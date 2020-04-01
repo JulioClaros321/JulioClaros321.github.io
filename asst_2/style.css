@@ -1,13 +1,11 @@
 @media only screen and (max-width: 600px) {
   .thumb-bar img {
     display: block;
-    width: 10%;
+    width: 500%;
     float: left;
     cursor: pointer;
   }
 }
-
-
 
 
 
