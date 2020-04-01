@@ -18,4 +18,6 @@ var i = 1
 /* Wiring up the Darken/Lighten button */
 btn.onclick = function() {
     const btnClass = btn.getAttribute('class');
-    
+    if (btnClass === 'dark') {
+        btn.setAttribute('class','light');
+        
