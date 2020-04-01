@@ -15,3 +15,7 @@ var i = 1
         displayedImage.src = e.target.src;
     }
   }
+/* Wiring up the Darken/Lighten button */
+btn.onclick = function() {
+    const btnClass = btn.getAttribute('class');
+    
