@@ -1,6 +1,9 @@
 @media only screen and (max-width: 600px) {
-  body {
-    display: none
+  .thumb-bar img {
+    display: block;
+    width: 10%;
+    float: left;
+    cursor: pointer;
   }
 }
 
