@@ -14,7 +14,7 @@ body {
   display: block;
   width: 640px;
   height: 480px;
-  top: 200%
+  margin-top: center;
 }
 
 .overlay {
