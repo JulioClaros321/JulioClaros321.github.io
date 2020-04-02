@@ -1,13 +1,22 @@
+body {
+    background-color: rgb(245, 245, 241);
+}
+h1 {
+    text-align: center;
+    color: black;
+}
 form {
     margin: 0 auto;
     width: 400px;
-    /* Form outline */
     padding: 1em;
-    border: 1px solid #CCC;
     border-radius: 1em;
 }
 
 label {
+    font-size: 25px;
+    text-align: right;
+    width: 90px;
+    
     
 
 }
@@ -15,12 +24,21 @@ label {
 input, textarea {
     margin: 0 auto;
     width: 400px;
-    /* Form outline */
-    padding: 1em;
-    border: 1px solid #CCC;
-    border-radius: 1em;
+    border: 2px solid #CCC;
+    border-radius: 4px;
+
 }
 
 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+.button {
+    padding-left: 90px;
+}
+
+button {
+    margin-left: 45%;
 }
