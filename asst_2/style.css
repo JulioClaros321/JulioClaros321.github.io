@@ -22,7 +22,7 @@ body {
 
 .full-img {
   position: relative;
-  display: block;
+  display: flex;
   width: 640px;
   height: 480px;
   margin-top: center;
