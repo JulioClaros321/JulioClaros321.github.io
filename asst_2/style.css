@@ -1,9 +1,16 @@
 @media only screen and (max-width: 600px) {
-  .thumb-bar img {
+  body {
     display: block;
-    width: 500px;
+    width: 50%;
+    height: 50%;
     float: left;
     cursor: pointer;
+  }
+  .thumb-bar {
+  margin: auto;
+  width: 50%;
+  float: left;
+  cursor: pointer;
   }
 }
 
@@ -23,7 +30,6 @@ body {
 
 .full-img {
   position: relative;
-  display: flex;
   width: 640px;
   height: 480px;
   margin-top: center;

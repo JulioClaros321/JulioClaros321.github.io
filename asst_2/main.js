@@ -12,7 +12,7 @@ var i = 1
     newImage.setAttribute('src', 'images/pic' + i + '.jpg');
     thumbBar.appendChild(newImage);
     newImage.onclick = function() {
-        displayedImage.src = image2.src;
+        displayedImage.src = newImage.src;
     }
   }
 /* Wiring up the Darken/Lighten button */
