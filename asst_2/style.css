@@ -49,8 +49,18 @@ button {
 }
 
 .thumb-bar img {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   width: 20%;
   float: left;
   cursor: pointer;
+}
+
+.displayed-img {
+  width: 640px;
+  height: 480;
+  display: flex;
+  justify-content: center;
 }
