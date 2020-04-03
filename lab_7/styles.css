@@ -8,8 +8,9 @@ body {
 }
 
 #mapid {
-  height: 700px;
-  width: 700px;
+  display: flex;
+  height: 600px;
+  width: 600px;
 }
 
 
