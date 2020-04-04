@@ -31,7 +31,7 @@
   </div>
     <script>
       
-      var map = L.map("mapid").setView([38.9897, -76.9378], 10);
+      var map = L.map("mapid").setView([38.9897, -76.9378], 11);
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -43,7 +43,7 @@
       }).addTo(map);
       
       var marker = L.marker([38.985955, -76.9451]).addTo(map);
-      var popup = marker.bindPopup("<b>McKeldin Library</b>").openPopup();
+      var popup = marker.bindPopup("<b>McKeldin Library</b>", {closeOnClick: false, autoClose: false}).openPopup();
       let counter = 0
 
       let places = [{"establishment_id":"952","name":"MARTINI'S RESTAURANT & LOUNGE","category":"Night Club","inspection_date":"2020-03-19T00:00:00.000","inspection_results":"Non-Compliant - Violations Observed","city":"FORT WASHINGTON","state":"MD","zip":"20744","address_line_1":"725 CADY DR","address_line_2":"------","food_from_approved_source":"In Compliance","food_protected_from":"In Compliance","ill_workers_restricted":"In Compliance","proper_hand_washing":"In Compliance","cooling_time_and_temperature":"In Compliance","cold_holding_temperature":"In Compliance","hot_holding_temperature":"In Compliance","cooking_time_and_temperature":"In Compliance","reheating_time_and_temperature":"In Compliance","hot_and_cold_running_water":"In Compliance","proper_sewage_disposal":"In Compliance","no_bare_hand_contact":"In Compliance","adequate_hand_washing":"In Compliance","rodent_and_insects":"In Compliance","food_contact_surfaces_and":"In Compliance","inspection_type":"Re-inspection","owner":"JEDAKA HAYES","type":"Food Establishments","geocoded_column_1":{"type":"Point","coordinates":[-76.996114,38.759579]},":@computed_region_87xh_ddyp":"15572"}
@@ -1046,12 +1046,19 @@
 ,{"establishment_id":"1261","name":"ROSARYVILLE ELEMENTARY SCHOOL","category":"Public School","inspection_date":"2019-10-30T00:00:00.000","inspection_results":"Compliance Schedule - Completed","city":"UPPER MARLBORO","state":"MD","zip":"20772","address_line_1":"9925 ROSARYVILLE RD","address_line_2":"------","food_from_approved_source":"In Compliance","food_protected_from":"In Compliance","ill_workers_restricted":"In Compliance","proper_hand_washing":"In Compliance","cooling_time_and_temperature":"In Compliance","cold_holding_temperature":"In Compliance","hot_holding_temperature":"In Compliance","cooking_time_and_temperature":"In Compliance","reheating_time_and_temperature":"In Compliance","hot_and_cold_running_water":"In Compliance","proper_sewage_disposal":"In Compliance","no_bare_hand_contact":"In Compliance","adequate_hand_washing":"In Compliance","rodent_and_insects":"In Compliance","food_contact_surfaces_and":"In Compliance","inspection_type":"Re-inspection","owner":"MARK FOSSETT","type":"Food Establishments","geocoded_column_1":{"type":"Point","coordinates":[-76.817,38.758926]},":@computed_region_87xh_ddyp":"17002"}
 ,{"establishment_id":"2824","name":"SALINAS ORIENTAL STORE","category":"Convenience Store","inspection_date":"2019-10-25T00:00:00.000","inspection_results":"Compliance Schedule - Completed","city":"FORT WASHINGTON","state":"MD","zip":"20744","address_line_1":"9205 OXON HILL RD","address_line_2":"------","food_from_approved_source":"In Compliance","food_protected_from":"In Compliance","ill_workers_restricted":"In Compliance","proper_hand_washing":"In Compliance","cooling_time_and_temperature":"In Compliance","cold_holding_temperature":"In Compliance","hot_holding_temperature":"In Compliance","cooking_time_and_temperature":"In Compliance","reheating_time_and_temperature":"In Compliance","hot_and_cold_running_water":"In Compliance","proper_sewage_disposal":"In Compliance","no_bare_hand_contact":"In Compliance","adequate_hand_washing":"In Compliance","rodent_and_insects":"In Compliance","food_contact_surfaces_and":"In Compliance","inspection_type":"Re-inspection","owner":"MILDA ASTERITA","type":"Food Establishments","geocoded_column_1":{"type":"Point","coordinates":[-77.00536,38.763343]},":@computed_region_87xh_ddyp":"15572"}
 ,{"establishment_id":"8268","name":"TROPICAL SMOOTHIE CAFE","category":"Carry-out","inspection_date":"2019-10-30T00:00:00.000","inspection_results":"Compliance Schedule - Outstanding","city":"COLLEGE PARK","state":"MD","zip":"20740","address_line_1":"10260 BALTIMORE AVE","address_line_2":"------","food_from_approved_source":"In Compliance","food_protected_from":"In Compliance","ill_workers_restricted":"In Compliance","proper_hand_washing":"In Compliance","cooling_time_and_temperature":"In Compliance","cold_holding_temperature":"In Compliance","hot_holding_temperature":"In Compliance","cooking_time_and_temperature":"In Compliance","reheating_time_and_temperature":"In Compliance","hot_and_cold_running_water":"In Compliance","proper_sewage_disposal":"In Compliance","no_bare_hand_contact":"In Compliance","adequate_hand_washing":"In Compliance","rodent_and_insects":"In Compliance","food_contact_surfaces_and":"In Compliance","inspection_type":"Re-inspection","owner":"JIGNA PATEL","type":"Food Establishments","geocoded_column_1":{"type":"Point","coordinates":[-76.924545,39.022579]},":@computed_region_87xh_ddyp":"15305"}]
+      
+      let random_num = []
+      for (counter; counter <3; counter++) {
+        num = Math.floor(Math.random() * places.length);
+        var coords = places[num].geocoded_column_1.coordinates.reverse();
+        var new_marker = L.marker(coords).addTo(map);
+        var name = places[num].name
+        var new_popup = new_marker.bindPopup(name, {closeOnClick: false, autoClose: false}).openPopup();
+        
+      // Corrupted json files will result in 1-2 coords displayed instead of 3, refresh if it happens
+      }
 
       
-      for (counter; counter <3; counter++) {
-        num = Math.floor(Math.random() * places.length)
-        console.log(num)
-      }
 
 
       
