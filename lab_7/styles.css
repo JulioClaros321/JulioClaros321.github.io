@@ -13,6 +13,12 @@ body {
   width: 600px;
 }
 
+div.leaflet-popup-content-wrapper {
+  color: purple;
+  border: 2px dotted plum;
+  font-weight: 1000;
+  font-family: cursive;
+}
 
 
 h1,
