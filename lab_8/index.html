@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Charts Lab</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Frontend Libraries: Charts Lab</div>
+        <div class="content">
+          <div id="chartContainer" style="height: 650px;">
+            
+          </div>
+        </div>
+        <div class="footer">Let's eat out in the future!</div>
+      </div>
+    </div>
+    <script>
+      fetch(' https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json') // replace this with the food safety data set
+        .then((response) => response.json())
+        .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
+          console.log(data);
+          const cleardata = data.filter((f) => f.geocoded_column_1);
+          const refined = cleardata.map((m) => ({
+            category: m.category,
+            name: m.name,
+            latlong: m.geocoded_column_1.coordinates,
+          }));
+          // return data; // <- this will pass the data to the next "then" statement when I'm ready.
+          return refined
+        })
+
+        .then((data) => {
+          return data.reduce((c, current) => {
+            if (!c[current.category]) {
+
+              c[current.category] = [];
+            }
+            c[current.category].push(current);
+            return c;
+          }, {});
+        })
+        
+        .then((data) => {
+          console.log("new data", data);
+          const reformattedData = Object.entries(data).map((m, i) => {
+            console.log(m)
+            return {
+              y: m[1].length,
+              label: m[0],
+          };
+        });
+        return reformattedData;
+      })
+      .then ((results) => {
+        console.log("name",results);
+        console.log(results[0]);
+        
+        const chart = new CanvasJS.Chart("chartContainer", {
+          theme: "dark2",
+          exportEnabled: true,
+          animationEnabled: true,
+          title: {
+            text: "Lets Find Somewhere To Eat"
+          },
+          data: [{
+              type: "pie",
+              startAngle: 25,
+              toolTipContent: "<b>{label}</b>: {y} resturants",
+		          showInLegend: "true",
+              legendText: "{label}",
+              indexLabelFontSize: 16,
+              indexLabel: "{label} - {y}",
+              dataPoints: results          }]
+      });
+      chart.render();
+        
+      })               
+    </script>
+  </body>
+</html>
