@@ -4,13 +4,17 @@
 <head>
   <title>Replace Me With Your Lab Page</title>
   <link rel="stylesheet" type="text/css" href="./styles.css">
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body>
   <div class="container">
     <div class="wrapper">
       <div class="header">Replace Me With Your Lab Page</div>
-      <div class="content"></div>
+      <div class="content">
+        <div id="chartContainer"></div>
+
+      </div>
       <div class="footer"></div>
     </div>
   </div>
@@ -18,7 +22,29 @@
     fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
       .then(res => res.json())
       .then(res => {
-        // Here's where your chart code should go.
+        
+        console.log("category", res)
+        console.log(res.data[0])
+
+        let chart = new CanvasJS.Chart("chartContainer", {
+          theme: "dark2",
+          exportEnabled: true,
+          animationEnabled: true,
+          title: {
+            text: "Lets Find Somewhere To Eat"
+          },
+          data: [{
+              type: "pie",
+              startAngle: 25,
+              toolTipContent: "<b>{label}</b>: {y} resturants",
+		          showInLegend: "true",
+              legendText: "{label}",
+              indexLabelFontSize: 16,
+              indexLabel: "{label} - {y}",
+              dataPoints: res.data       }]
+      });
+      chart.render();
+        
       })
   </script>
 </body>

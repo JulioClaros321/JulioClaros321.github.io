@@ -1,0 +1,29 @@
+{
+  "name": "sample_server",
+  "version": "1.0.0",
+  "description": "A sample webserver to pull UMD.io data and push it to a local page",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "author": "Alex Leitch",
+  "license": "CC-BY-SA-4.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "sqlite": "^4.0.7",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^2.0.3"
+  }
+}
