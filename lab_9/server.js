@@ -35,6 +35,7 @@ function processDataForFrontEnd(req, res) {
 
     })
   .then((data) => {
+    console.log(data)
     let newDATA = data.filter((r) => r.geocoded_column_1)
     const refined = newDATA.map((t) => ({
           category: t.category,
@@ -51,11 +52,13 @@ function processDataForFrontEnd(req, res) {
         c[current.category] = [];
       }
       c[current.category].push(current);
+    
       return c;
     }, {});
   })
   
   .then((data) => {
+    console.log(data)
     console.log("new data", data);
     const reformattedData = Object.entries(data).map((m, i) => {
       console.log(m)

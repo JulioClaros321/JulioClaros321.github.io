@@ -18,16 +18,17 @@
       </div>
     </div>
     <script>
-      fetch(' https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json') // replace this with the food safety data set
+      fetch('https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json') // replace this with the food safety data set
         .then((response) => response.json())
         .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
 
           console.log("lol", data);
-          const cleardata = data.filter((f) => f.geocoded_column_1);
-          const refined = cleardata.map((m) => ({
-            category: m.category,
-            name: m.name,
-            latlong: m.geocoded_column_1.coordinates,
+          const refined = data.map((m) => ({
+            CrimeType: m.clearance_code_inc_type,
+            Latitude: m.latitude,
+            Longitude: m.longitude,
+            Date: m.date,
+            Sector: m.pgpd_sector
           }));
           // return data; // <- this will pass the data to the next "then" statement when I'm ready.
           return refined
@@ -36,25 +37,19 @@
         .then((data) => {
           console.log("hehe", data)
           return data.reduce((c, current) => {
-            if (!c[current.category]) {
+            if (!c[current.CrimeType]) {
 
-              c[current.category] = [];
+              c[current.CrimeType] = [];
             }
-            c[current.category].push(current);
+            c[current.CrimeType].push(current);
             return c;
           }, {});
         })
         
         .then((data) => {
           console.log("new data", data);
-          const reformattedData = Object.entries(data).map((m, i) => {
-            console.log(m)
-            return {
-              y: m[1].length,
-              label: m[0],
-          };
-        });
-        return reformattedData;
+          console.log("lol", data["ACCIDENT"].)
+          
       })
       .then ((results) => {
         console.log("name",results);
