@@ -1,0 +1,12 @@
+body {
+    background-color: pink;
+    
+}
+
+.listings {
+    border: solid black .1cm; 
+    width: 50%;
+    height: 50%; 
+    align-items: center;
+    justify-content: center;
+}
