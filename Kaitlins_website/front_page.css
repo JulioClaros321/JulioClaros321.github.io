@@ -1,0 +1,86 @@
+body { 
+    background-image: url("/Kaitlins_website/images/web_background.png");
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 15%;
+    background-color: pink;
+}
+
+.front_items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.logo {
+    height: 50%;
+    width: 50%;
+
+}
+p {
+    color: white;
+    font-family: 'Coiny', cursive;
+    font-size: .7cm;
+    margin: 0px;
+
+
+}
+.store_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 50px;
+    width: 300px;
+    height: 70px;
+    border-radius: 80px;
+    line-height: 70px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 6%;
+    display: block;
+}
+
+.store_button::before {
+    
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .5;
+    background: white;
+    top: -100%; 
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+}
+
+.store_button::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+    transition-delay: .2s;
+}
+
+.store_button:hover {
+    color: pink;
+}
+
+.store_button:hover::before {
+    top: 0;
+}
+
+.store_button:hover::after {
+    top: 0;
+}
