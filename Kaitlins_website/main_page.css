@@ -28,7 +28,15 @@ body {
     
 }
 
-
+p {
+    font-size: 80px;
+    color: ;
+    font-family: 'Coiny', cursive;
+    text-align: center;
+    border: purple solid 1px;
+    width: 60%;
+    margin-left: 20%;
+}
 
 .listings {
     display: flex;
@@ -36,7 +44,7 @@ body {
     flex-direction: row;
     width: 80%;
     height: 40%;
-    margin-top: 5%;
+    margin-top: -50px;
     margin-left: 10%;
 }
 
