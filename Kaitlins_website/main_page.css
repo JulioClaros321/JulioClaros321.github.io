@@ -9,6 +9,7 @@ body {
     background-color: white;
     border-top: solid black;
     border-width: 30px;
+    margin: 0px;
 }
 
 #topBlackBar {
@@ -31,7 +32,6 @@ body {
 
 .listings {
     display: flex;
-    border: solid yellow .2cm;;
     align-items: center;
     flex-direction: row;
     width: 80%;
@@ -41,7 +41,7 @@ body {
 }
 
 .item_one {
-    border: solid black .1cm; 
+    border: solid gray .1cm; 
     width: 30%;
     height: 13cm;
 
@@ -49,7 +49,7 @@ body {
 
 
 .item_two {
-    border: solid black .1cm;
+    border: solid gray .1cm;
     width: 30%; 
     height: 13cm;
     margin-left: 1.5%;
@@ -58,14 +58,14 @@ body {
 
 
 .item_three {
-    border: solid black .1cm; 
+    border: solid gray .1cm; 
     width: 30%;
     height: 13cm;
     margin-left: 1.5%;
 }
 
 .item_four {
-    border: solid black .1cm; 
+    border: solid gray .1cm; 
     width: 30%;
     height: 13cm;
     margin-left: 1.5%;
