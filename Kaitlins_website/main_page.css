@@ -1,13 +1,32 @@
 body {
     display: flex;
+    flex-direction: column;
     height: 100%;
-    border: solid .2cm red;
     background-image: url(/Kaitlins_website/images/mainpage_back.jpg);
     background-repeat: repeat;
     background-position: center center;
     background-size: 15%;
     background-color: white;
+    border-top: solid black;
+    border-width: 30px;
 }
+
+#topBlackBar {
+    border-top: 50px solid #000;
+    width: 100%;
+  }
+  
+#logoContainer {
+    display: flex;
+    margin-top: -90px;
+    height: 100px;
+  }
+
+#mini_logo {
+    height: 100%;
+    
+}
+
 
 
 .listings {
@@ -17,7 +36,7 @@ body {
     flex-direction: row;
     width: 80%;
     height: 40%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 10%;
 }
 
