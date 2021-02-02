@@ -30,10 +30,8 @@ body {
 
 p {
     font-size: 80px;
-    color: ;
     font-family: 'Coiny', cursive;
     text-align: center;
-    border: purple solid 1px;
     width: 60%;
     margin-left: 20%;
 }
@@ -49,7 +47,7 @@ p {
 }
 
 .item_one {
-    border: solid gray .1cm; 
+    border: solid lightgray .1cm; 
     width: 30%;
     height: 13cm;
 
@@ -222,7 +220,7 @@ p {
     background-image: url(/Kaitlins_website/images/liquor.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 145%;
+    background-size: 130%;
     transition: .3s;
     display: block;
 }
