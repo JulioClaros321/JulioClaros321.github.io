@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url(/Kaitlins_website/images/mainpage_back.jpg);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 15%;
+    background-color: white;
+    border-top: solid black;
+    border-width: 30px;
+    margin: 0px;
+}
+
+#topBlackBar {
+    border-top: 50px solid #000;
+    width: 100%;
+  }
+  
+#logoContainer {
+    display: flex;
+    margin-top: -90px;
+    height: 100px;
+  }
+
+#mini_logo {
+    height: 100%;
+    
+}
+
