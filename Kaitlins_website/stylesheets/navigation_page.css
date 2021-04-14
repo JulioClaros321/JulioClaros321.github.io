@@ -1,0 +1,269 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url(/Kaitlins_website/images/mainpage_back.jpg);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 15%;
+    background-color: white;
+    border-top: solid black;
+    border-width: 30px;
+    margin: 0px;
+}
+
+#topBlackBar {
+    border-top: 50px solid #000;
+    width: 100%;
+  }
+  
+#logoContainer {
+    display: flex;
+    margin-top: -90px;
+    height: 100px;
+  }
+
+#mini_logo {
+    height: 100%;
+    
+}
+
+p {
+    font-size: 60px;
+    font-family: 'Coiny', cursive;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    text-transform: uppercase;
+}
+
+
+
+.listings {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 60%;
+    height: 40%;
+    margin-top: -50px;
+    margin-left: 20%;
+}
+
+.item_one {
+    border: solid black .2cm; 
+    border-radius: 30px;
+    overflow: hidden;
+    width: 30%;
+    height: 13cm;
+
+}
+
+
+.item_two {
+    border: solid black .2cm; 
+    border-radius: 30px;
+    overflow: hidden;
+    width: 30%; 
+    height: 13cm;
+    margin-left: 1.5%;
+}
+
+
+
+.item_three {
+    border: solid black .2cm; 
+    border-radius: 30px;
+    overflow: hidden;
+    width: 30%;
+    height: 13cm;
+    margin-left: 1.5%;
+}
+
+
+
+
+.gift_box {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 12cm;
+    text-decoration: none;
+    color: transparent;
+    position: relative;
+    overflow: hidden;
+    background-image: url(/Kaitlins_website/images/gift_box_symbol.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 135%;
+    transition: .3s;
+    display: block;
+}
+
+.gift_box::before {
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .5;
+    background: pink;
+    top: -100%; 
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+}
+
+.gift_box::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: pink;
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+    transition-delay: .2s;
+}
+
+.gift_box:hover {
+    color: white;
+    background-image: none;
+}
+
+.gift_box:hover::before {
+    top: 0;
+}
+
+.gift_box:hover::after {
+    top: 0;
+}
+
+
+
+
+
+.apparel {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 50px;
+    width: 100%;
+    height: 100%;
+    line-height: 12cm;
+    text-align: center;
+    text-decoration: none;
+    color: transparent; 
+    position: relative;
+    overflow: hidden;
+    background-image: url(/Kaitlins_website/images/apparel_symbol.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 135%;
+    transition: .3s;
+    display: block;
+}
+
+.apparel::before {
+    
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .5;
+    background: pink;
+    top: -100%; 
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+}
+
+.apparel::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: pink;
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+    transition-delay: .2s;
+}
+
+.apparel:hover {
+    color: white;
+    background-image: none;
+}
+
+.apparel:hover::before {
+    top: 0;
+}
+
+.apparel:hover::after {
+    top: 0;
+}
+
+
+
+.gift_shop {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 50px;
+    width: 100%;
+    height: 100%;
+    line-height: 12cm;
+    text-align: center;
+    text-decoration: none;
+    color: transparent; 
+    position: relative;
+    overflow: hidden;
+    background-image: url(/Kaitlins_website/images/gift_shop_symbol.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 135%;
+    transition: .3s;
+    display: block;
+}
+
+.gift_shop::before {
+    
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .5;
+    background: pink;
+    top: -100%; 
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+}
+
+.gift_shop::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: pink;
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .3s;
+    transition-delay: .2s;
+}
+
+.gift_shop:hover {
+    color: white;
+    background-image: none;
+}
+
+.gift_shop:hover::before {
+    top: 0;
+}
+
+.gift_shop:hover::after {
+    top: 0;
+}
+
