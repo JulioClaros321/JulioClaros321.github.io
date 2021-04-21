@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url(/Kaitlins_website/images/mainpage_back.jpg);
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/mainpage_back.jpg);
     background-repeat: repeat;
     background-position: center center;
     background-size: 15%;
@@ -94,7 +94,7 @@ p {
     color: transparent;
     position: relative;
     overflow: hidden;
-    background-image: url(/Kaitlins_website/images/gift_box_symbol.jpg);
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_box_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 135%;
@@ -157,7 +157,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/Kaitlins_website/images/apparel_symbol.jpg);
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/apparel_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 135%;
@@ -219,7 +219,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/Kaitlins_website/images/gift_shop_symbol.jpg);
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_shop_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 135%;
