@@ -97,7 +97,7 @@ p {
     background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_box_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 135%;
+    background-size: cover;
     transition: .3s;
     display: block;
 }
@@ -148,7 +148,7 @@ p {
 .apparel {
     font-family:fantasy;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 49px;
     width: 100%;
     height: 100%;
     line-height: 12cm;
@@ -160,7 +160,7 @@ p {
     background-image: url(/ProjectsinProgress/GiftsByWonderland//images/apparel_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 135%;
+    background-size: cover;
     transition: .3s;
     display: block;
 }
@@ -222,7 +222,7 @@ p {
     background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_shop_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 135%;
+    background-size: cover;
     transition: .3s;
     display: block;
 }
