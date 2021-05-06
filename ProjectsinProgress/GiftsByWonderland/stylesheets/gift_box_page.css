@@ -1,0 +1,208 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/lol.jpg);
+    background-size: 7%;
+    background-color: white;
+    border-width: 30px;
+    margin: 0px;
+}
+
+.page_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 90px;
+}
+
+.page_logo {
+    display: flex;
+    background-color: white;
+    border-radius: 30px;
+    justify-content: center;
+    width: 90%;
+    border-bottom: black solid 2px;
+
+}
+
+#logo { 
+    display: flex;
+    height: 90px;
+    width: auto;
+}
+
+.arrow_container {
+    position: absolute;
+    height: 90px;
+    margin-right: 85%;
+    
+}
+
+#arrow {
+    height: 90px;
+    width: 100px;
+
+}
+
+.shopping_cart  {
+    position: absolute;
+    height: 90px;
+    margin-left: 85%;
+    
+}
+
+#cart_logo {
+    height: 90px;
+    width: 100px;
+
+}
+.store_item_container {
+    display: flex;
+    flex-direction: column;
+    height: 18in;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 1%;
+    border: 1px green solid;
+    
+}
+
+
+.store_item_details {
+    display: flex;
+    flex-direction: row;
+}
+
+.store_item_description {
+    display: flex;
+    flex-direction: row;
+    margin-left: 750px;
+    position: absolute;
+    margin-top: -650px;
+    width: 500px;
+    height: 650px;
+    border: 1px red solid;
+}
+
+.item_title {
+    font-size: 100px;
+    border: 1px red solid;
+}
+
+.button_container {
+    display: flex;
+    height: 100px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; 
+    margin: 25px;
+    align-items: center;
+    
+}
+
+.text {
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#btn-1 {
+    background-color: black
+    ;
+}
+
+
+#btn-2 {
+    background-color: rgba(214,85,123,255);
+}
+
+#btn-3 {
+    background-color: rgba(221,121,145,255);
+}
+
+#btn-4 {
+    background-color: rgba(43,74,156,255);
+}
+
+
+.slider {
+    width: 700px;
+    height: 650px;
+    margin-left: 15px;
+    margin-top: 3%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: black dashed 3px;
+
+}
+
+.slides {
+    display: flex;
+    width: 500%;
+    height: 650px;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide { 
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img {
+    width: 700px;
+    height: 650px;
+}
+
+.navigation-manual{
+    position: absolute;
+    width: 700px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 6px solid black;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 80px;
+}
+
+.manual-btn:hover{
+    background: white;
+}
+
+#radio1:checked ~ .first{ 
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{ 
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first{ 
+    margin-left: -40%;
+}
+
+#radio4:checked ~ .first{ 
+    margin-left: -60%;
+}

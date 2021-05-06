@@ -21,11 +21,18 @@ body {
 p {
     color: white;
     font-family: 'Coiny', cursive;
-    font-size: .7cm;
+    font-size: .9cm;
     margin: 0px;
 
 
 }
+
+.register {
+    font-size: 25px;
+    color: white;
+    margin-top: 20px;
+}
+
 .store_button {
     font-family:fantasy;
     text-transform: uppercase;
