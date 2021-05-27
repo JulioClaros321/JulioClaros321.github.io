@@ -1,3 +1,4 @@
+/* body and header section */
 body {
     display: flex;
     flex-direction: column;
@@ -47,6 +48,7 @@ body {
 
 }
 
+
 .shopping_cart  {
     position: absolute;
     height: 90px;
@@ -58,46 +60,213 @@ body {
     height: 90px;
     width: 100px;
 
+/* END body and header section */
+
+
+
+/* Store Elements */
+
+
+/* Selection Elements */
+
 }
 .store_item_container {
     display: flex;
     flex-direction: column;
-    height: 18in;
+    height: auto;
     width: 80%;
     margin-left: 10%;
     margin-top: 1%;
-    border: 1px green solid;
     
 }
 
 
 .store_item_details {
     display: flex;
+    margin-top: 6%;
+    position: absolute;
     flex-direction: row;
+    border: 5px solid white;
 }
+
 
 .store_item_description {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 750px;
     position: absolute;
-    margin-top: -650px;
-    width: 500px;
-    height: 650px;
-    border: 1px red solid;
+    margin-top: -625px;
+    width: 750px;
+    height: 600px;
+    border: white 4px solid;
 }
 
-.item_title {
-    font-size: 100px;
-    border: 1px red solid;
+
+#item_title {
+    width: 600px;
+    height: 80px;
+    margin-top: 0;
+    margin-left: 60px;
+    border-bottom: 1px solid black;
 }
+
+
+#candy_type {
+    height: 100px;
+    width: 400px;
+}
+
+#giftcard_type {
+    height: 100px;
+    width: 400px;
+}
+.chocolate_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(139,69,19);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.gummy_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: goldenrod; 
+    position: relative;
+    background: lightblue;
+    overflow: hidden;
+    transition: .3s;
+    margin-right: 20px;
+    margin-top: 1%;
+    display: block;
+}
+
+.gamestop_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid red;
+    color: red; 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.starbucks_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0, 112, 74);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.disabled {
+    border: white 3px solid;
+    color: white;
+    background-color: gray;
+    opacity: 60%;
+}
+
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
+.price_tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.price { 
+    font-family: fantasy;
+    margin-right: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+#figure { 
+    color: green;
+}
+
+
 
 .button_container {
     display: flex;
-    height: 100px;
+    height: 90px;
     flex-direction: row;
     justify-content: center;
 }
+
+.add_to_cart {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 30px;
+    width: 300px;
+    height: 70px;
+    border-radius: 80px;
+    line-height: 70px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0,191,255);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: -20px;
+    display: block;
+}
+
+/* END Selection Elements */
+
+/* SLIDE SHOW ELEMENTS */
 
 
 .btn {
@@ -204,5 +373,310 @@ body {
 }
 
 #radio4:checked ~ .first{ 
+    margin-left: -60%;
+}
+
+/* END SHOW ELEMENTS */
+
+/* END Store Elements */
+
+
+
+
+
+
+.second_store_item_details {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+}
+
+
+.second_store_item_description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 754px;
+    position: absolute;
+    margin-top: -623px;
+    width: 750px;
+    height: 600px;
+}
+
+
+#second_item_title {
+    width: 600px;
+    height: 80px;
+    margin-left: 60px;
+    margin-top: -28px;
+    border-bottom: 1px solid black;
+}
+
+
+#second_candy_type {
+    margin-top: 5px;
+    height: 100px;
+    width: 400px;
+}
+
+#second_giftcard_type {
+    border: solid green 1px;
+    margin-top: 23px;
+    height: 100px;
+    width: 400px;
+}
+.second_chocolate_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(139,69,19);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.second_gummy_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: goldenrod; 
+    position: relative;
+    background: lightblue;
+    overflow: hidden;
+    transition: .3s;
+    margin-right: 20px;
+    margin-top: 1%;
+    display: block;
+}
+
+.second_gamestop_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid red;
+    color: red; 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.second_starbucks_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0, 112, 74);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.disabled {
+    border: white 3px solid;
+    color: white;
+    background-color: gray;
+    opacity: 60%;
+}
+
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
+.second_price_tag {
+    display: flex;
+    margin-top: -7px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.second_price { 
+    font-family: fantasy;
+    margin-right: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+#second_figure { 
+    color: green;
+}
+
+
+
+.second_button_container {
+    display: flex;
+    margin-top: 2px;
+    height: 90px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.second_add_to_cart {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 30px;
+    width: 300px;
+    height: 70px;
+    border-radius: 80px;
+    line-height: 70px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0,191,255);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: -22px;
+    display: block;
+}
+
+/* END Selection Elements */
+
+/* SLIDE SHOW ELEMENTS */
+
+
+.second_btn {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; 
+    margin: 25px;
+    align-items: center;
+    
+}
+
+.second_text {
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#second_btn-1 {
+    background-color: black
+    ;
+}
+
+
+#second_btn-2 {
+    background-color: rgba(214,85,123,255);
+}
+
+#second_btn-3 {
+    background-color: rgba(221,121,145,255);
+}
+
+#second_btn-4 {
+    background-color: rgba(43,74,156,255);
+}
+
+
+.second_slider {
+    width: 700px;
+    height: 650px;
+    margin-left: 15px;
+    margin-top: 3%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: black dashed 3px;
+
+}
+
+.second_slides {
+    display: flex;
+    width: 500%;
+    height: 650px;
+}
+
+.second_slides input {
+    display: none;
+}
+
+.second_slide { 
+    width: 20%;
+    transition: 2s;
+}
+
+.second_slide img {
+    width: 700px;
+    height: 650px;
+}
+
+.second_navigation-manual{
+    position: absolute;
+    width: 700px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.second_manual-btn {
+    border: 6px solid black;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.second_manual-btn:not(:last-child) {
+    margin-right: 80px;
+}
+
+.second_manual-btn:hover{
+    background: white;
+}
+
+#second_radio1:checked ~ .first{ 
+    margin-left: 0;
+}
+
+#second_radio2:checked ~ .first{ 
+    margin-left: -20%;
+}
+
+#second_radio3:checked ~ .first{ 
+    margin-left: -40%;
+}
+
+#second_radio4:checked ~ .first{ 
     margin-left: -60%;
 }
