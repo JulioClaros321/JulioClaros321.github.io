@@ -6,7 +6,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/ProjectsinProgress/GiftsByWonderland//stylesheets/gift_box_page.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="/ProjectsinProgress/GiftsByWonderland/scripts/store.js" async></script>
 
     </head>
 
@@ -57,7 +58,7 @@
         </div>
 
         
-        <div class="store_item_details">
+        <div class="store_item_details" id="first_display">
             <div class="slider"> 
                 <div class="slides"> 
                     <input type="radio" name="radio-btn" id="radio1">
@@ -90,9 +91,17 @@
                 </div>
             </div>
 
-            <div class="store_item_description">
-                <form>
+            <div class="store_item_description" title="Him Box">
                     <img src="/ProjectsinProgress/GiftsByWonderland/images/item_title1.png" id="item_title">
+                    
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/drinks.png" id="drink_type">
+                    <div class="button_container">
+                        <input class= "corona_button" type="button" value="Corona">
+                        <input class= "heineken_button" type="button" value="Heineken">
+                        <input class= "monster_button" type="button" value="Monster">
+                        <input class= "redbull_button" type="button" value="Redbull">
+                    </div>
+                    
                     <img src="/ProjectsinProgress/GiftsByWonderland/images/candy_type.png" id="candy_type">
                     <div class="button_container">
                         <input class= "chocolate_button" type="button" value="Chocolate">
@@ -103,16 +112,17 @@
                     <div class="button_container">
                         <input class= "gamestop_button" type="button" value="GameStop">
                         <input class= "starbucks_button" type="button" value="Starbucks">
+                        <input class= "steam_button" type="button" value="Steam">
+                        <input class= "xbox_button" type="button" value="Xbox">
                     </div>
                     <div class="price_tag">
                     <p class="price">Price: </p>
-                    <p class="price" id="figure">$10.99</p>
+                    <p class="price" id="figure">$49.99</p>
                     </div>
 
                     <div class="button_container">
-                        <button class="add_to_cart">Add To Cart </button>
+                        <button class="add_to_cart" type="button">Add To Cart </button>
                     </div>
-                    
             </div>
 
             <div class="navigation-manual">
@@ -125,7 +135,7 @@
 
         </div>
 
-        <div class="second_store_item_details">
+        <div class="second_store_item_details" id="second_display">
             <div class="second_slider"> 
                 <div class="second_slides"> 
                     <input type="radio" name="radio-btn" id="second_radio1">
@@ -159,8 +169,23 @@
             </div>
 
             <div class="second_store_item_description">
-                <form>
-                    <img src="/ProjectsinProgress/GiftsByWonderland/images/item_title2.png" id="second_item_title">
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/item_title2.png" id="second_item_title" title="Her Box">
+                    
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/drinks.png" id="second_drink_type">
+                    <div class="second_button_container">
+                        <input class= "second_corona_button" type="button" value="Corona">
+                        <input class= "barefoot_button" type="button" value="Barefoot">
+                        <input class= "whiteclaw_button" type="button" value="Whiteclaw">
+                        <input class= "snapple_button" type="button" value="Snapple">
+                    </div>
+
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/makeup.png" id="makeup_type">
+                    <div class="second_button_container">
+                        <input class= "face_button" type="button" value="Face">
+                        <input class= "body_button" type="button" value="Body">
+                        <input class= "hair_button" type="button" value="Hair">
+                    </div>
+
                     <img src="/ProjectsinProgress/GiftsByWonderland/images/candy_type.png" id="second_candy_type">
                     <div class="second_button_container">
                         <input class= "second_chocolate_button" type="button" value="Chocolate">
@@ -168,22 +193,22 @@
                     </div>
                     
                     <img src="/ProjectsinProgress/GiftsByWonderland/images/giftcard_type.png" id="second_giftcard_type">
-                    <div class="second_button_container">
-                        <input class= "second_gamestop_button" type="button" value="GameStop">
+                    <div class="button_container">
+                        <input class= "Bed_Bath_button" type="button" value="Bed Bath and Beyond">
                         <input class= "second_starbucks_button" type="button" value="Starbucks">
+                        <input class= "forever21_button" type="button" value="Forever 21">
                     </div>
                     <div class="second_price_tag">
                     <p class="second_price">Price: </p>
-                    <p class="second_price" id="figure">$10.99</p>
+                    <p class="second_price" id="second_figure">$10.99</p>
                     </div>
 
                     <div class="second_button_container">
-                        <button class="second_add_to_cart">Add To Cart </button>
-                    </div>
-                    
+                        <button class="add_to_cart" type="button">Add To Cart </button>
+                    </div>  
             </div>
 
-            <div class="navigation-manual">
+            <div class="second_navigation-manual">
                 <label for="second_radio1" class="second_manual-btn"></label>
                 <label for="second_radio2" class="second_manual-btn"></label>
                 <label for="second_radio3" class="second_manual-btn"></label>
@@ -192,10 +217,139 @@
 
 
         </div>
-        
-    </div> 
+
+        <div class="third_store_item_details" id="third_display">
+            <div class="third_slider"> 
+                <div class="third_slides"> 
+                    <input type="radio" name="radio-btn" id="third_radio1">
+                    <input type="radio" name="radio-btn" id="third_radio2">
+                    <input type="radio" name="radio-btn" id="third_radio3">
+                    <input type="radio" name="radio-btn" id="third_radio4">
+                
+                <div class="third_slide first"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class="third_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+                
+                <div class="third_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class="third_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class-"third_navigation-auto"> 
+                    <div class="third_auto-btn1"></div>
+                    <div class="third_auto-btn2"></div>
+                    <div class="third_auto-btn3"></div>
+                    <div class="third_auto-btn4"></div>
+
+                </div>
+            </div>
+
+            <div class="third_store_item_description">
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/item_title3.png" id="third_item_title" title="Parent Box">
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/candy_type.png" id="third_candy_type">
+                    <div class="third_button_container">
+                        <input class= "third_chocolate_button" type="button" value="Chocolate">
+                        <input class= "third_gummy_button" type="button" value="Gummies">
+                    </div>
+                    
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/giftcard_type.png" id="third_giftcard_type">
+                    <div class="button_container">
+                        <input class= "third_gamestop_button" type="button" value="GameStop">
+                        <input class= "third_starbucks_button" type="button" value="Starbucks">
+                    </div>
+                    <div class="third_price_tag">
+                    <p class="third_price">Price: </p>
+                    <p class="third_price" id="third_figure">$10.99</p>
+                    </div>
+
+                    <div class="third_button_container">
+                        <button class="third_add_to_cart" type="button">Add To Cart </button>
+                    </div>  
+            </div>
+
+            <div class="third_navigation-manual">
+                <label for="third_radio1" class="third_manual-btn"></label>
+                <label for="third_radio2" class="third_manual-btn"></label>
+                <label for="third_radio3" class="third_manual-btn"></label>
+                <label for="third_radio4" class="third_manual-btn"></label>
+            </div>
 
 
+        </div>
+
+
+        <div class="fourth_store_item_details" id="fourth_display">
+            <div class="fourth_slider"> 
+                <div class="fourth_slides"> 
+                    <input type="radio" name="radio-btn" id="fourth_radio1">
+                    <input type="radio" name="radio-btn" id="fourth_radio2">
+                    <input type="radio" name="radio-btn" id="fourth_radio3">
+                    <input type="radio" name="radio-btn" id="fourth_radio4">
+                
+                <div class="fourth_slide first"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class="fourth_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+                
+                <div class="fourth_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class="fourth_slide"> 
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/Coming.jpg" alt="">
+                </div>
+
+                <div class-"fourth_navigation-auto"> 
+                    <div class="fourth_auto-btn1"></div>
+                    <div class="fourth_auto-btn2"></div>
+                    <div class="fourth_auto-btn3"></div>
+                    <div class="fourth_auto-btn4"></div>
+
+                </div>
+            </div>
+
+            <div class="fourth_store_item_description">
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/item_title4.png" id="fourth_item_title" title="Festive Box">
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/candy_type.png" id="fourth_candy_type">
+                    <div class="fourth_button_container">
+                        <input class= "fourth_chocolate_button" type="button" value="Chocolate">
+                        <input class= "fourth_gummy_button" type="button" value="Gummies">
+                    </div>
+                    
+                    <img src="/ProjectsinProgress/GiftsByWonderland/images/giftcard_type.png" id="fourth_giftcard_type">
+                    <div class="button_container">
+                        <input class= "fourth_gamestop_button" type="button" value="GameStop">
+                        <input class= "fourth_starbucks_button" type="button" value="Starbucks">
+                    </div>
+                    <div class="fourth_price_tag">
+                    <p class="fourth_price">Price: </p>
+                    <p class="fourth_price" id="fourth_figure">$10.99</p>
+                    </div>
+
+                    <div class="fourth_button_container">
+                        <button class="fourth_add_to_cart" type="button">Add To Cart </button>
+                    </div>
+            </div>
+
+            <div class="fourth_navigation-manual">
+                <label for="fourth_radio1" class="fourth_manual-btn"></label>
+                <label for="fourth_radio2" class="fourth_manual-btn"></label>
+                <label for="fourth_radio3" class="fourth_manual-btn"></label>
+                <label for="fourth_radio4" class="fourth_manual-btn"></label>
+            </div>
+
+
+        </div>
     
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

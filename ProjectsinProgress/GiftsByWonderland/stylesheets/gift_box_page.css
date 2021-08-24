@@ -76,17 +76,17 @@ body {
     height: auto;
     width: 80%;
     margin-left: 10%;
-    margin-top: 1%;
+    
     
 }
 
 
 .store_item_details {
     display: flex;
-    margin-top: 6%;
     position: absolute;
     flex-direction: row;
-    border: 5px solid white;
+    margin-top: 7%;
+
 }
 
 
@@ -94,21 +94,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 750px;
+    margin-left: 754px;
     position: absolute;
-    margin-top: -625px;
+    margin-top: -588px;
     width: 750px;
     height: 600px;
-    border: white 4px solid;
 }
 
 
 #item_title {
     width: 600px;
     height: 80px;
-    margin-top: 0;
     margin-left: 60px;
+    margin-top: -28px;
     border-bottom: 1px solid black;
+}
+
+#drink_type {
+    height: 100px;
+    width: 400px;
 }
 
 
@@ -117,12 +121,119 @@ body {
     width: 400px;
 }
 
+
 #giftcard_type {
     height: 100px;
     width: 400px;
 }
+
+.corona_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid rgb(12,31,61);
+    color: rgb(12,31,61); 
+    position: relative;
+    background: white;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+
+.heineken_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: white; 
+    position: relative;
+    background: rgb(4,135,67);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.monster_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: rgb(15,172,66); 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.redbull_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: rgb(213,2,59);
+    position: relative;
+    background: rgb(23,48,132);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+
+
+
 .chocolate_button {
     font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(139,69,19);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
     text-transform: uppercase;
     font-size: 25px;
     width: 250px;
@@ -200,8 +311,63 @@ body {
     background: rgb(0, 112, 74);
     overflow: hidden;
     transition: .3s;
+    margin-right: 20px;
     margin-top: 1%;
     display: block;
+}
+
+.steam_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid rgb(92,175,175);
+    color: white; 
+    position: relative;
+    background: rgb(20,24,24);
+    overflow: hidden;
+    transition: .3s;
+    margin-right: 20px;
+    margin-top: 1%;
+    display: block;
+}
+
+.xbox_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(16,124,15);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+
+.top_disabled {
+    color: gray;
+    opacity: 90%;
+
+}
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
 }
 
 .disabled {
@@ -211,17 +377,11 @@ body {
     opacity: 60%;
 }
 
-.select {
-    outline-color: transparent;
-    border: 2px solid yellow;
-
-}
-
 .price_tag {
     display: flex;
+    margin-top: -10px;
     flex-direction: row;
     justify-content: center;
-    margin-top: -30px;
 }
 
 .price { 
@@ -260,7 +420,7 @@ body {
     background: rgb(0,191,255);
     overflow: hidden;
     transition: .3s;
-    margin-top: -20px;
+    margin-top: -22px;
     display: block;
 }
 
@@ -384,11 +544,12 @@ body {
 
 
 
-
 .second_store_item_details {
     display: flex;
     position: absolute;
     flex-direction: row;
+    margin-top: 7%;
+
 }
 
 
@@ -398,7 +559,7 @@ body {
     justify-content: center;
     margin-left: 754px;
     position: absolute;
-    margin-top: -623px;
+    margin-top: -504px;
     width: 750px;
     height: 600px;
 }
@@ -412,19 +573,175 @@ body {
     border-bottom: 1px solid black;
 }
 
+#second_drink_type {
+    height: 100px;
+    width: 400px;
+}
+
+#makeup_type {
+    height: 100px;
+    width: 400px;
+}
+
 
 #second_candy_type {
-    margin-top: 5px;
     height: 100px;
     width: 400px;
 }
 
 #second_giftcard_type {
-    border: solid green 1px;
-    margin-top: 23px;
     height: 100px;
     width: 400px;
 }
+
+.hair_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: white; 
+    position: relative;
+    background: rgb(255, 140, 179);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.body_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: white; 
+    position: relative;
+    background: rgb(255, 140, 179);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.face_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: white; 
+    position: relative;
+    background: rgb(255, 140, 179);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+
+.second_corona_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid rgb(12,31,61);
+    color: rgb(12,31,61); 
+    position: relative;
+    background: white;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.whiteclaw_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: black; 
+    position: relative;
+    background: white;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.barefoot_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid ;
+    color: white; 
+    position: relative;
+    background: rgb(154,47,72);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.snapple_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid rgb(238,136,139);
+    color: rgb(61,92,162); 
+    position: relative;
+    background: rgb(252,230,107);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
 .second_chocolate_button {
     font-family:fantasy;
     text-transform: uppercase;
@@ -467,7 +784,7 @@ body {
     display: block;
 }
 
-.second_gamestop_button {
+.Bed_Bath_button {
     font-family:fantasy;
     text-transform: uppercase;
     font-size: 25px;
@@ -477,12 +794,12 @@ body {
     line-height: 55px;
     text-align: center;
     text-decoration: none;
-    border: 3px solid red;
-    color: red; 
+    border: 3px solid black;
+    color: black; 
     position: relative;
-    background: black;
+    background: white;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 5px;
     transition: .3s;
     margin-top: 1%;
     display: block;
@@ -505,25 +822,34 @@ body {
     overflow: hidden;
     transition: .3s;
     margin-top: 1%;
+    margin-right: 5px;
     display: block;
 }
 
-.disabled {
-    border: white 3px solid;
-    color: white;
-    background-color: gray;
-    opacity: 60%;
+.forever21_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid black;
+    color: rgb(255,105,177); 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
 }
 
-.select {
-    outline-color: transparent;
-    border: 2px solid yellow;
-
-}
 
 .second_price_tag {
     display: flex;
-    margin-top: -7px;
+    margin-top: -10px;
     flex-direction: row;
     justify-content: center;
 }
@@ -543,30 +869,23 @@ body {
 
 .second_button_container {
     display: flex;
-    margin-top: 2px;
     height: 90px;
     flex-direction: row;
     justify-content: center;
 }
 
-.second_add_to_cart {
-    font-family:fantasy;
-    text-transform: uppercase;
-    font-size: 30px;
-    width: 300px;
-    height: 70px;
-    border-radius: 80px;
-    line-height: 70px;
-    text-align: center;
-    text-decoration: none;
-    border: 3px solid white;
-    color: white; 
-    position: relative;
-    background: rgb(0,191,255);
-    overflow: hidden;
-    transition: .3s;
-    margin-top: -22px;
-    display: block;
+
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
+.disabled {
+    border: white 3px solid;
+    color: white;
+    background-color: gray;
+    opacity: 60%;
 }
 
 /* END Selection Elements */
@@ -680,3 +999,570 @@ body {
 #second_radio4:checked ~ .first{ 
     margin-left: -60%;
 }
+
+/* END SHOW ELEMENTS */
+
+/* END Store Elements */
+
+
+.third_store_item_details {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    margin-top: 7%;
+
+}
+
+
+.third_store_item_description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 754px;
+    position: absolute;
+    margin-top: -650px;
+    width: 750px;
+    height: 600px;
+}
+
+
+#third_item_title {
+    width: 600px;
+    height: 80px;
+    margin-left: 60px;
+    margin-top: -28px;
+    border-bottom: 1px solid black;
+}
+
+
+#third_candy_type {
+    height: 100px;
+    width: 400px;
+}
+
+#third_giftcard_type {
+    height: 100px;
+    width: 400px;
+}
+.third_chocolate_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(139,69,19);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.third_gummy_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: goldenrod; 
+    position: relative;
+    background: lightblue;
+    overflow: hidden;
+    transition: .3s;
+    margin-right: 20px;
+    margin-top: 1%;
+    display: block;
+}
+
+.third_gamestop_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid red;
+    color: red; 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.third_starbucks_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0, 112, 74);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+
+.third_price_tag {
+    display: flex;
+    margin-top: -32px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.third_price { 
+    font-family: fantasy;
+    margin-right: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+#third_figure { 
+    color: green;
+}
+
+
+
+.third_button_container {
+    display: flex;
+    height: 90px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
+.disabled {
+    border: white 3px solid;
+    color: white;
+    background-color: gray;
+    opacity: 60%;
+}
+
+/* END Selection Elements */
+
+/* SLIDE SHOW ELEMENTS */
+
+
+.third_btn {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; 
+    margin: 25px;
+    align-items: center;
+    
+}
+
+.third_text {
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#third_btn-1 {
+    background-color: black
+    ;
+}
+
+
+#third_btn-2 {
+    background-color: rgba(214,85,123,255);
+}
+
+#third_btn-3 {
+    background-color: rgba(221,121,145,255);
+}
+
+#third_btn-4 {
+    background-color: rgba(43,74,156,255);
+}
+
+
+.third_slider {
+    width: 700px;
+    height: 650px;
+    margin-left: 15px;
+    margin-top: 3%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: black dashed 3px;
+
+}
+
+.third_slides {
+    display: flex;
+    width: 500%;
+    height: 650px;
+}
+
+.third_slides input {
+    display: none;
+}
+
+.third_slide { 
+    width: 20%;
+    transition: 2s;
+}
+
+.third_slide img {
+    width: 700px;
+    height: 650px;
+}
+
+.third_navigation-manual{
+    position: absolute;
+    width: 700px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.third_manual-btn {
+    border: 6px solid black;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.third_manual-btn:not(:last-child) {
+    margin-right: 80px;
+}
+
+.third_manual-btn:hover{
+    background: white;
+}
+
+#third_radio1:checked ~ .first{ 
+    margin-left: 0;
+}
+
+#third_radio2:checked ~ .first{ 
+    margin-left: -20%;
+}
+
+#third_radio3:checked ~ .first{ 
+    margin-left: -40%;
+}
+
+#third_radio4:checked ~ .first{ 
+    margin-left: -60%;
+}
+
+/* END SHOW ELEMENTS */
+
+/* END Store Elements */
+
+
+.fourth_store_item_details {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    margin-top: 7%;
+
+}
+
+
+.fourth_store_item_description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 754px;
+    position: absolute;
+    margin-top: -650px;
+    width: 750px;
+    height: 600px;
+}
+
+
+#fourth_item_title {
+    width: 600px;
+    height: 80px;
+    margin-left: 60px;
+    margin-top: -28px;
+    border-bottom: 1px solid black;
+}
+
+
+#fourth_candy_type {
+    height: 100px;
+    width: 400px;
+}
+
+#fourth_giftcard_type {
+    height: 100px;
+    width: 400px;
+}
+.fourth_chocolate_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(139,69,19);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    margin-right: 20px;
+    display: block;
+}
+
+.fourth_gummy_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: goldenrod; 
+    position: relative;
+    background: lightblue;
+    overflow: hidden;
+    transition: .3s;
+    margin-right: 20px;
+    margin-top: 1%;
+    display: block;
+}
+
+.fourth_gamestop_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid red;
+    color: red; 
+    position: relative;
+    background: black;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+.fourth_starbucks_button {
+    font-family:fantasy;
+    text-transform: uppercase;
+    font-size: 25px;
+    width: 250px;
+    height: 60px;
+    border-radius: 80px;
+    line-height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    color: white; 
+    position: relative;
+    background: rgb(0, 112, 74);
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 1%;
+    display: block;
+}
+
+
+.fourth_price_tag {
+    display: flex;
+    margin-top: -32px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fourth_price { 
+    font-family: fantasy;
+    margin-right: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+#fourth_figure { 
+    color: green;
+}
+
+
+
+.fourth_button_container {
+    display: flex;
+    height: 90px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
+.disabled {
+    border: white 3px solid;
+    color: white;
+    background-color: gray;
+    opacity: 60%;
+}
+
+/* END Selection Elements */
+
+/* SLIDE SHOW ELEMENTS */
+
+
+.fourth_btn {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; 
+    margin: 25px;
+    align-items: center;
+    
+}
+
+.fourth_text {
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#fourth_btn-1 {
+    background-color: black
+    ;
+}
+
+
+#fourth_btn-2 {
+    background-color: rgba(214,85,123,255);
+}
+
+#fourth_btn-3 {
+    background-color: rgba(221,121,145,255);
+}
+
+#fourth_btn-4 {
+    background-color: rgba(43,74,156,255);
+}
+
+
+.fourth_slider {
+    width: 700px;
+    height: 650px;
+    margin-left: 15px;
+    margin-top: 3%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: black dashed 3px;
+
+}
+
+.fourth_slides {
+    display: flex;
+    width: 500%;
+    height: 650px;
+}
+
+.fourth_slides input {
+    display: none;
+}
+
+.fourth_slide { 
+    width: 20%;
+    transition: 2s;
+}
+
+.fourth_slide img {
+    width: 700px;
+    height: 650px;
+}
+
+.fourth_navigation-manual{
+    position: absolute;
+    width: 700px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.fourth_manual-btn {
+    border: 6px solid black;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.fourth_manual-btn:not(:last-child) {
+    margin-right: 80px;
+}
+
+.fourth_manual-btn:hover{
+    background: white;
+}
+
+#fourth_radio1:checked ~ .first{ 
+    margin-left: 0;
+}
+
+#fourth_radio2:checked ~ .first{ 
+    margin-left: -20%;
+}
+
+#fourth_radio3:checked ~ .first{ 
+    margin-left: -40%;
+}
+
+#fourth_radio4:checked ~ .first{ 
+    margin-left: -60%;
+}
+
+/* END SHOW ELEMENTS */
+
+/* END Store Elements */
+
