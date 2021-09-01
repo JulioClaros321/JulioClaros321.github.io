@@ -8,7 +8,6 @@ else {
 
 
 function ready() {
-
     $('#text-1').show();
     $('#text-2').show();
     $('#text-3').show();
@@ -509,9 +508,60 @@ function addToCartClicked(event) {
     var button = event.target
     var shopItem = button.parentElement.parentElement
     var itemTitle = shopItem.title
-    console.log(shopItem.getElementsByClassName("button_container"))
+    const items_included = []
+    var container = shopItem.getElementsByClassName("button_container")
+    var price = (shopItem.getElementsByClassName("price_tag").item(0).getElementsByClassName("price")[1].innerText).replace("$", "")
+
+
+
+
+    if (itemTitle == "Him Box") {
+        var item_graphic = document.createElement("img");
+        item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_him.jpg"
     
+    } else if (itemTitle == "Her Box") {
+        var item_graphic = document.createElement("img");
+        item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_her.jpg"
+
+    }
+
+    
+    for (var i =0; i< container.length - 1; i++) {
+        items_included.push(container[i].getElementsByClassName("select").item(0).value)
+
+    }
+    console.log(itemTitle)
+    console.log(items_included)
+    console.log(price)
+    console.log(item_graphic)
+
+
+    addItemToCart(itemTitle, items_included, price, item_graphic)
 }
+
+
+function addItemToCart(itemTitle, items_included, price, item_graphic) {
+    var cartRow = document.createElement("div")
+    cartRow.classList.add("cart-row")
+    var cartItems = document.getElementsByClassName("cart-items")
+    var cartRowContents = `
+    <div class="cart-item cart-column">
+        <img class="cart-item-image" src="${item_graphic}" width="100" height="100">
+        <span class="cart-item-title">${itemTitle}</span>
+    </div>
+
+    <span class="cart-price cart-column">${price}</span>
+
+    <div class="cart-quantity cart-column">
+        <input class="cart-quantity-input" type="number" value="1">
+        <button class="btn btn-danger" type="button">REMOVE</button>
+    </div>`
+
+    cartRow.innerHTML = cartRowContents
+    console.log(cartRow)
+    console.log(cartItems)
+}
+
 
 function quantityChanged(event) {
     var input = event.target

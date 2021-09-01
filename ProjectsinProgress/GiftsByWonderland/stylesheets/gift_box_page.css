@@ -424,6 +424,10 @@ body {
     display: block;
 }
 
+.add_to_cart:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
 /* END Selection Elements */
 
 /* SLIDE SHOW ELEMENTS */

@@ -40,8 +40,8 @@ body {
 
 #shopping_cart {
     height: 100%;
-    width: 30%;
-    margin-left: 60%;
+    width: 100px;
+    margin-right: 50px;
 }
 
 p {
