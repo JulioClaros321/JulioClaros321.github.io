@@ -2,12 +2,15 @@ if (document.readyState == "loading") {
     document.addEventListener("DOMContentLoaded", ready)
 }
 else {
-    ready()
+    ready
 }
 
 
 
 function ready() {
+
+
+
     $('#text-1').show();
     $('#text-2').show();
     $('#text-3').show();
@@ -530,10 +533,10 @@ function addToCartClicked(event) {
         items_included.push(container[i].getElementsByClassName("select").item(0).value)
 
     }
-    console.log(itemTitle)
+    /*console.log(itemTitle)
     console.log(items_included)
     console.log(price)
-    console.log(item_graphic)
+    console.log(item_graphic)*/
 
 
     addItemToCart(itemTitle, items_included, price, item_graphic)
@@ -541,9 +544,9 @@ function addToCartClicked(event) {
 
 
 function addItemToCart(itemTitle, items_included, price, item_graphic) {
+    var item_graphic = JSON.stringify(item_graphic.src)
     var cartRow = document.createElement("div")
     cartRow.classList.add("cart-row")
-    var cartItems = document.getElementsByClassName("cart-items")
     var cartRowContents = `
     <div class="cart-item cart-column">
         <img class="cart-item-image" src="${item_graphic}" width="100" height="100">
@@ -558,8 +561,43 @@ function addItemToCart(itemTitle, items_included, price, item_graphic) {
     </div>`
 
     cartRow.innerHTML = cartRowContents
-    console.log(cartRow)
-    console.log(cartItems)
+    
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
+
+
+
+
+    
+    var item = {
+
+        title: itemTitle,
+        desciption: items_included,
+        price: price,
+        item_image: item_graphic
+    }
+    
+
+    var list_of_items = []
+    
+    
+    if (cartItems == null) {
+        list_of_items.push(item)
+    }
+
+    else {
+        
+        }
+        
+
+    localStorage.clear()
+    localStorage.setItem("productsInCart", JSON.stringify(list_of_items))
+
+
+
+
+
+
 }
 
 
