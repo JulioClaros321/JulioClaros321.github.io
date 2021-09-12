@@ -485,152 +485,111 @@ function ready() {
 
     });
 
-    var removeCartItemsButtons = document.getElementsByClassName('btn-danger')
-
-    for (var i=0; i < removeCartItemsButtons.length; i++) {
-        var button = removeCartItemsButtons[i]
-        button.addEventListener("click", removeCartItem) 
-        }
-
-    var quantityInputs = document.getElementsByClassName("cart-quantity-input")
-    for (var i = 0; i < quantityInputs.length; i++) { 
-        var input = quantityInputs[i]
-        input.addEventListener("change", quantityChanged)
-
-    }
-
     var addToCartButtons = document.getElementsByClassName("add_to_cart")
     for (var i = 0; i < addToCartButtons.length; i++) {
         var button = addToCartButtons[i]
         button.addEventListener("click", addToCartClicked)
     
     }
-}
-
-function addToCartClicked(event) {
-    var button = event.target
-    var shopItem = button.parentElement.parentElement
-    var itemTitle = shopItem.title
-    const items_included = []
-    var container = shopItem.getElementsByClassName("button_container")
-    var price = (shopItem.getElementsByClassName("price_tag").item(0).getElementsByClassName("price")[1].innerText).replace("$", "")
 
 
-
-
-    if (itemTitle == "Him Box") {
-        var item_graphic = document.createElement("img");
-        item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_him.jpg"
-    
-    } else if (itemTitle == "Her Box") {
-        var item_graphic = document.createElement("img");
-        item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_her.jpg"
-
-    }
-
-    
-    for (var i =0; i< container.length - 1; i++) {
-        items_included.push(container[i].getElementsByClassName("select").item(0).value)
-
-    }
-    /*console.log(itemTitle)
-    console.log(items_included)
-    console.log(price)
-    console.log(item_graphic)*/
-
-
-    addItemToCart(itemTitle, items_included, price, item_graphic)
-}
-
-
-function addItemToCart(itemTitle, items_included, price, item_graphic) {
-    var item_graphic = JSON.stringify(item_graphic.src)
-    var cartRow = document.createElement("div")
-    cartRow.classList.add("cart-row")
-    var cartRowContents = `
-    <div class="cart-item cart-column">
-        <img class="cart-item-image" src="${item_graphic}" width="100" height="100">
-        <span class="cart-item-title">${itemTitle}</span>
-    </div>
-
-    <span class="cart-price cart-column">${price}</span>
-
-    <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="1">
-        <button class="btn btn-danger" type="button">REMOVE</button>
-    </div>`
-
-    cartRow.innerHTML = cartRowContents
-    
-    let cartItems = localStorage.getItem("productsInCart");
-    cartItems = JSON.parse(cartItems);
+    function addToCartClicked(event) {
+        var button = event.target
+        var shopItem = button.parentElement.parentElement
+        var itemTitle = shopItem.title
+        const items_included = []
+        var container = shopItem.getElementsByClassName("button_container")
+        var price = (shopItem.getElementsByClassName("price_tag").item(0).getElementsByClassName("price")[1].innerText).replace("$", "")
 
 
 
 
-    
-    var item = {
-
-        title: itemTitle,
-        desciption: items_included,
-        price: price,
-        item_image: item_graphic
-    }
-    
-
-    var list_of_items = []
-    
-    
-    if (cartItems == null) {
-        list_of_items.push(item)
-    }
-
-    else {
+        if (itemTitle == "Him Box") {
+            var item_graphic = document.createElement("img");
+            item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_him.jpg"
         
+        } else if (itemTitle == "Her Box") {
+            var item_graphic = document.createElement("img");
+            item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_her.jpg"
+
+        }
+
+        
+        for (var i =0; i< container.length - 1; i++) {
+            items_included.push(container[i].getElementsByClassName("select").item(0).value)
+
+        }
+        /*console.log(itemTitle)
+        console.log(items_included)
+        console.log(price)
+        console.log(item_graphic)*/
+
+
+        addItemToCart(itemTitle, items_included, price, item_graphic)
+    }
+
+
+    function addItemToCart(itemTitle, items_included, price, item_graphic) {
+        var item_graphic = JSON.stringify(item_graphic.src)
+        
+        let cartItems = localStorage.getItem("productsInCart");
+        cartItems = JSON.parse(cartItems);
+
+
+
+        
+        var item = {
+
+            title: itemTitle,
+            desciption: items_included,
+            price: price,
+            item_image: item_graphic
         }
         
 
-    localStorage.clear()
-    localStorage.setItem("productsInCart", JSON.stringify(list_of_items))
-
-
-
-
-
-
-}
-
-
-function quantityChanged(event) {
-    var input = event.target
-    if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1
-    }
-    updateCartTotal() 
-}
-
-function removeCartItem(event) {
-    var buttonClicked = event.target 
-    buttonClicked.parentElement.parentElement.remove()
-    updateCartTotal()
-}
-
-
-function updateCartTotal() {
-    var cartItemContainer = document.getElementsByClassName("cart-items")[0]
-    var cartRows = cartItemContainer.getElementsByClassName("cart-row")
-    var total = 0
-
-    for (var i=0; i < cartRows.length; i++) {
-        var cartRow = cartRows[i]
-        var priceElement = cartRow.getElementsByClassName("cart-price")[0]
-        var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0]
-
-        var price = parseFloat(priceElement.innerHTML.replace("$", " "))
-        var quantity = quantityElement.value
-        total = total + (price * quantity)
+        var list_of_items = []
         
+        
+        if (cartItems == null) {
+            list_of_items.push(item)
         }
-        total = Math.round(total * 100) / 100
-        document.getElementsByClassName("cart-total-price")[0].innerText = "$" + total
+
+        else {
+            list_of_items = cartItems
+            list_of_items.push(item)
+            }
+            
+
+        localStorage.clear()
+        localStorage.setItem("productsInCart", JSON.stringify(list_of_items))
+
+        let transferList = localStorage.getItem("productsInCart");
+        transferList = JSON.parse(transferList)
+        
+        
+
     }
+
+    /*function transferStoragetoCart(transferList) {
+        console.log(transferList, "it made it to the function")
+        var cartRow = document.createElement("div")
+        cartRow.classList.add("cart-row")
+        var cartRowContents = `
+        <div class="cart-item cart-column">
+            <img class="cart-item-image" src="${item_graphic}" width="100" height="100">
+            <span class="cart-item-title">${itemTitle}</span>
+        </div>
+
+        <span class="cart-price cart-column">${price}</span>
+
+        <div class="cart-quantity cart-column">
+            <input class="cart-quantity-input" type="number" value="1">
+            <button class="btn btn-danger" type="button">REMOVE</button>
+        </div>`
+
+        cartRow.innerHTML = cartRowContents
+
+
+    }
+    */
+}
