@@ -2,7 +2,7 @@ if (document.readyState == "loading") {
     document.addEventListener("DOMContentLoaded", ready)
 }
 else {
-    ready
+    ready()
 }
 
 
@@ -530,7 +530,7 @@ function ready() {
 
 
     function addItemToCart(itemTitle, items_included, price, item_graphic) {
-        var item_graphic = JSON.stringify(item_graphic.src)
+
         
         let cartItems = localStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
@@ -541,9 +541,9 @@ function ready() {
         var item = {
 
             title: itemTitle,
-            desciption: items_included,
+            description: items_included,
             price: price,
-            item_image: item_graphic
+            item_image: item_graphic.src
         }
         
 

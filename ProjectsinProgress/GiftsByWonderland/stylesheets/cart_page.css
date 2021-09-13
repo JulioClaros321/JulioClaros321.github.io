@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/lol.jpg);
+    background-size: 7%;
+    background-color: pink;
+    border-width: 30px;
+    margin: 0px;
+}
+
+
+.topbar {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.main_logo {
+    height: 100px;
+    width: 150px;
+    border: yellow solid 1px;
+}
+
+#mini_logo {
+    height: 100%;
+    
+    
+}
