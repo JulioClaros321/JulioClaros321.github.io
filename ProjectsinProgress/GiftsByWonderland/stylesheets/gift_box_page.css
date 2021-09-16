@@ -1,4 +1,16 @@
 /* body and header section */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+
+
+@font-face {
+    font-family: "Booter - Zero Zero";
+    src: url("Fonts/Booter - Zero Zero.woff") format("woff"),
+         url("Fonts/Booter - Zero Zero.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -50,11 +62,31 @@ body {
 
 
 .shopping_cart  {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     height: 90px;
     margin-left: 85%;
     
 }
+
+.notification {
+    position: absolute;
+    padding-top: 2px;
+    width: 30px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: yellow;
+    color: black;
+    margin-top: 5%;
+    margin-left: 60%;
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-family: Raleway;
+}
+
+
 
 #cart_logo {
     height: 90px;
@@ -127,6 +159,15 @@ body {
     width: 400px;
 }
 
+.btn:hover {
+    color: blanchedalmond;
+    background: black;
+}
+
+.button:hover {
+    color: black;
+    background: blanchedalmond;
+}
 .corona_button {
     font-family:fantasy;
     text-transform: uppercase;
@@ -358,6 +399,12 @@ body {
     display: block;
 }
 
+.top_select {
+    outline-color: transparent;
+    border: 2px solid yellow;
+
+}
+
 
 .top_disabled {
     color: gray;
@@ -441,7 +488,8 @@ body {
     border-radius: 50px; 
     margin: 25px;
     align-items: center;
-    
+    font-family: Raleway;
+    color: black;
 }
 
 .text {

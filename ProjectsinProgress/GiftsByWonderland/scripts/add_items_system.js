@@ -9,13 +9,20 @@ else {
 
 function ready() {
 
+    if (sessionStorage.getItem("productsInCart") == null) {
+        document.getElementById("number").innerHTML = 0
+    }
+
+    else {
+        document.getElementById("number").innerHTML = JSON.parse(sessionStorage.getItem("productsInCart")).length
+    }
 
 
     $('#text-1').show();
     $('#text-2').show();
     $('#text-3').show();
     $('#text-4').show();
-    $("#btn-1").addClass("select");
+    $("#btn-1").addClass("top_select");
     $("#second_display").detach().appendTo(".store_item_container");
     $("#third_display").detach().appendTo(".store_item_container");
     $("#fourth_display").detach().appendTo(".store_item_container");
@@ -28,7 +35,7 @@ function ready() {
 
 
     $('#btn-1').click(function(){
-        $("#btn-1").addClass("select");
+        $("#btn-1").addClass("top_select");
         $('#btn-1').removeClass("top_disabled");
 
 
@@ -36,9 +43,9 @@ function ready() {
         $('#btn-3').addClass("top_disabled");
         $('#btn-4').addClass("top_disabled");
 
-        $('#btn-2').removeClass("select");
-        $('#btn-3').removeClass("select");
-        $('#btn-4').removeClass("select");
+        $('#btn-2').removeClass("top_select");
+        $('#btn-3').removeClass("top_select");
+        $('#btn-4').removeClass("top_select");
 
         $("#first_display").show();
         $("#second_display").hide();
@@ -50,7 +57,7 @@ function ready() {
     });
 
     $('#btn-2').click(function(){
-        $("#btn-2").addClass("select");
+        $("#btn-2").addClass("top_select");
         $('#btn-2').removeClass("top_disabled");
 
 
@@ -59,9 +66,9 @@ function ready() {
         $('#btn-4').addClass("top_disabled");
 
 
-        $('#btn-3').removeClass("select");
-        $('#btn-4').removeClass("select");
-        $('#btn-1').removeClass("select");
+        $('#btn-3').removeClass("top_select");
+        $('#btn-4').removeClass("top_select");
+        $('#btn-1').removeClass("top_select");
 
         $("#first_display").hide();
         $("#second_display").show();
@@ -71,7 +78,7 @@ function ready() {
     });
 
     $('#btn-3').click(function(){
-        $("#btn-3").addClass("select");
+        $("#btn-3").addClass("top_select");
         $('#btn-3').removeClass("top_disabled");
 
 
@@ -80,9 +87,9 @@ function ready() {
         $('#btn-2').addClass("top_disabled");
 
 
-        $('#btn-4').removeClass("select");
-        $('#btn-1').removeClass("select");
-        $('#btn-2').removeClass("select");
+        $('#btn-4').removeClass("top_select");
+        $('#btn-1').removeClass("top_select");
+        $('#btn-2').removeClass("top_select");
 
         $("#first_display").hide();
         $("#second_display").hide();
@@ -91,7 +98,7 @@ function ready() {
     });
 
     $('#btn-4').click(function(){
-        $("#btn-4").addClass("select");
+        $("#btn-4").addClass("top_select");
         $('#btn-4').removeClass("top_disabled");
 
 
@@ -100,9 +107,9 @@ function ready() {
         $('#btn-3').addClass("top_disabled");
 
 
-        $('#btn-1').removeClass("select");
-        $('#btn-2').removeClass("select");
-        $('#btn-3').removeClass("select");
+        $('#btn-1').removeClass("top_select");
+        $('#btn-2').removeClass("top_select");
+        $('#btn-3').removeClass("top_select");
 
 
 
@@ -485,6 +492,8 @@ function ready() {
 
     });
 
+
+
     var addToCartButtons = document.getElementsByClassName("add_to_cart")
     for (var i = 0; i < addToCartButtons.length; i++) {
         var button = addToCartButtons[i]
@@ -494,6 +503,11 @@ function ready() {
 
 
     function addToCartClicked(event) {
+        /*var selected = document.getElementsByClassName("select")
+        for (i =1; i< selected.length; i++)
+            console.log(selected[i])
+            selected[i].classList.remove("select")*/
+        
         var button = event.target
         var shopItem = button.parentElement.parentElement
         var itemTitle = shopItem.title
@@ -532,7 +546,7 @@ function ready() {
     function addItemToCart(itemTitle, items_included, price, item_graphic) {
 
         
-        let cartItems = localStorage.getItem("productsInCart");
+        let cartItems = sessionStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
 
 
@@ -543,7 +557,8 @@ function ready() {
             title: itemTitle,
             description: items_included,
             price: price,
-            item_image: item_graphic.src
+            item_image: item_graphic.src,
+            quantity: 1
         }
         
 
@@ -557,39 +572,32 @@ function ready() {
         else {
             list_of_items = cartItems
             list_of_items.push(item)
-            }
-            
+            }            
+        
+        
+        
+        
 
-        localStorage.clear()
-        localStorage.setItem("productsInCart", JSON.stringify(list_of_items))
+        sessionStorage.clear()
+        sessionStorage.setItem("productsInCart", JSON.stringify(list_of_items))
 
-        let transferList = localStorage.getItem("productsInCart");
-        transferList = JSON.parse(transferList)
+        let updateNotification = sessionStorage.getItem("productsInCart");
+        updateNotification = JSON.parse(updateNotification)
+
+        document.getElementById("number").innerHTML = updateNotification.length
+        
         
         
 
     }
 
-    /*function transferStoragetoCart(transferList) {
-        console.log(transferList, "it made it to the function")
-        var cartRow = document.createElement("div")
-        cartRow.classList.add("cart-row")
-        var cartRowContents = `
-        <div class="cart-item cart-column">
-            <img class="cart-item-image" src="${item_graphic}" width="100" height="100">
-            <span class="cart-item-title">${itemTitle}</span>
-        </div>
 
-        <span class="cart-price cart-column">${price}</span>
+    $(".add_to_cart").click(function() {
+        $(".select").removeClass("select")
+    });
 
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
-        </div>`
+    $(".add_to_cart").click(function() {
+        $(".disabled").removeClass("disabled")
+    });
 
-        cartRow.innerHTML = cartRowContents
-
-
-    }
-    */
 }
