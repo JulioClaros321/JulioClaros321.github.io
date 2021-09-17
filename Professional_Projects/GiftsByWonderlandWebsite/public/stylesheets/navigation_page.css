@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+
+
+* {
+    box-sizing: border-box;
+    font-family: Raleway;
+    color: black;
+}
+
 body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/mainpage_back.jpg);
+    background-image: url(/images/mainpage_back.jpg);
     background-repeat: repeat;
     background-position: center center;
     background-size: 15%;
@@ -38,10 +47,34 @@ body {
     
 }
 
+.shopping_cart  {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    height: 90px;
+    margin-left: 92%;
+    
+}
+
+.notification {
+    position: absolute;
+    padding-top: 2px;
+    width: 30px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: yellow;
+    color: black;
+    margin-top: 5%;
+    margin-left: 60%;
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-family: Raleway;
+}
+
 #shopping_cart {
-    height: 100%;
+    height: 90px;
     width: 100px;
-    margin-right: 50px;
 }
 
 p {
@@ -110,7 +143,7 @@ p {
     color: transparent;
     position: relative;
     overflow: hidden;
-    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_box_symbol.jpg);
+    background-image: url(/images/gift_box_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -173,7 +206,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/apparel_symbol.jpg);
+    background-image: url(/images/apparel_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -235,7 +268,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/ProjectsinProgress/GiftsByWonderland//images/gift_shop_symbol.jpg);
+    background-image: url(/images/gift_shop_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

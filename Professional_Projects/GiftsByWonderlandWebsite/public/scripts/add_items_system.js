@@ -520,11 +520,11 @@ function ready() {
 
         if (itemTitle == "Him Box") {
             var item_graphic = document.createElement("img");
-            item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_him.jpg"
+            item_graphic.src = "/images/for_him.jpg"
         
         } else if (itemTitle == "Her Box") {
             var item_graphic = document.createElement("img");
-            item_graphic.src = "/ProjectsinProgress/GiftsByWonderland/images/for_her.jpg"
+            item_graphic.src = "/images/for_her.jpg"
 
         }
 
