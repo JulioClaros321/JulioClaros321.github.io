@@ -1,0 +1,27 @@
+{
+"store_items": [
+    {
+        "title": "Him Box", 
+        "price": 4599
+
+    },
+    {
+        "title": "Her Box", 
+        "price": 4999
+
+    },
+    {
+        "title": "Parent Box", 
+        "price": 5999
+
+    },
+    {
+        "title": "Festive Box", 
+        "price": 4999
+
+    }
+
+
+]
+
+}

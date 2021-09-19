@@ -8,9 +8,12 @@ else {
 
 function ready() {
 
-    addItemsToCart() 
-    var removeCartItemsButtons = document.getElementsByClassName('remove')
+    addItemsToCart()
+    document.getElementsByClassName("btn_purchase")[0].addEventListener("click", purchaseMade)
+    
 
+    
+    var removeCartItemsButtons = document.getElementsByClassName('remove')
     for (var i=0; i < removeCartItemsButtons.length; i++) {
         var button = removeCartItemsButtons[i]
         button.addEventListener("click", removeCartItem) 
@@ -21,6 +24,58 @@ function ready() {
         var input = quantityInputs[i]
         input.addEventListener("change", quantityChanged)
 
+    }
+
+    var stripeHandler = StripeCheckout.configure({
+        key: stripePublicKey,
+        local: "en",
+        token: function(token) {
+            var ServerProcessingItems = []
+            var storage = JSON.parse(sessionStorage.getItem("productsInCart"))
+            
+            for (i=0; i < storage.length; i++) {
+                var name = storage[i].name
+                var quantity = storage[i].quantity
+
+                ServerProcessingItems.push({
+                    title: name,
+                    quantity: quantity
+                })
+
+            }
+            fetch("/purchase", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    stripeTokenId: token.id,
+                    items: ServerProcessingItems
+                })
+            }).then(function(res) {
+                return res.json()
+            }).then(function(data) {
+                alert(data.message)
+                var shopping_cart = document.getElementsByClassName("cart_items")[0]
+                while (shopping_cart.hasChildNodes()) {
+                    shopping_cart.removeChild(shopping_cart.firstChild)
+                }
+                sessionStorage.removeItem("productsInCart")
+                updateCartTotal()
+            }).catch(function(error) {
+                console.log(error)
+            })
+        }
+    })
+
+    
+
+    function purchaseMade() {
+        var price = parseFloat((document.getElementsByClassName("cart_total_price")[0]).innerText.replace("$", "")) * 100
+        stripeHandler.open({
+            amount: price
+        })
     }
 
     function quantityChanged(event) {
@@ -90,7 +145,6 @@ function ready() {
 
 
         }
-        console.log(document.getElementsByClassName("cart_quantity_input")[0].value)
 
         updateCartTotal()
     }
