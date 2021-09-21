@@ -79,7 +79,21 @@ function ready() {
     }
 
     function quantityChanged(event) {
+        var session_items = JSON.parse(sessionStorage.getItem("productsInCart"));
         var input = event.target
+        var input_row = input.parentElement.parentElement
+        var compare_row = (document.getElementsByClassName("cart_items")[0]).getElementsByClassName("cart_row")
+        
+        for (i=0; i < compare_row.length; i++) {
+            if (input_row == compare_row[i])
+            var session_variable = i
+        }
+        
+        session_items[session_variable].quantity = input.value
+        sessionStorage.clear()
+        sessionStorage.setItem("productsInCart", JSON.stringify(session_items))
+        
+        
         if (isNaN(input.value) || input.value <= 0) {
             input.value = 1
         }
@@ -135,7 +149,7 @@ function ready() {
             <span class="cart_description column desc_innertext">${cartList[i].description}</span>
             <span class="cart_price column innertext">$${cartList[i].price}</span>
             <div class="cart_quantity column">
-                <input class="cart_quantity_input" type="number" value="1">
+                <input class="cart_quantity_input" type="number" value="${cartList[i].quantity}">
                 <button class="btn remove" type="button">REMOVE</button>
             </div>`
 
