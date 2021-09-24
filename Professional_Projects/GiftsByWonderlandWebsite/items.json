@@ -19,6 +19,66 @@
         "title": "Festive Box", 
         "price": 4999
 
+    },
+    {
+        "title": "Among Us Red", 
+        "price": 2499
+
+    },
+    {
+        "title": "Among Us Blue", 
+        "price": 2499
+
+    },
+    {
+        "title": "Among Us Yellow", 
+        "price": 2499
+
+    },
+    {
+        "title": "Among Us Purple", 
+        "price": 2499
+
+    },
+    {
+        "title": "iPhone Black", 
+        "price": 1499
+
+    },
+    {
+        "title": "iPhone Blue", 
+        "price": 1499
+
+    },
+    {
+        "title": "iPhone Green", 
+        "price": 1499
+
+    },
+    {
+        "title": "iPhone Red", 
+        "price": 1399
+
+    },
+    {
+        "title": "Skull Shirt", 
+        "price": 2499
+
+    },
+    {
+        "title": "Spongebob Shirt", 
+        "price": 2499
+
+    },
+    {
+        "title": "Drunk Shirt", 
+        "price": 1499
+
+    },
+    {
+        "title": "Astronaut Shirt", 
+        "price": 2499
+
     }
 
 

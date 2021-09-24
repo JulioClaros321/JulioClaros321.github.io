@@ -128,7 +128,7 @@ html, body {
 }
 
 .cart_item {
-    width: 30%;
+    width: 40%;
 }
 
 .cart_description {
@@ -151,7 +151,7 @@ html, body {
 
 .cart_item_image {
     width: 75px;
-    height: auto;
+    height: 80px;
     border-radius: 10px;
 
 }

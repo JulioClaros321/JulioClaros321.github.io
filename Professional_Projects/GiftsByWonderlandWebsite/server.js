@@ -39,11 +39,13 @@ app.post("/purchase", function(req, res) {
             const itemsJson = JSON.parse(data)
             const itemsArray = itemsJson.store_items
             let total = 0 
+            console.log(req.body.items)
             req.body.items.forEach(function(item) {
                 const itemJson = itemsArray.find(function(i) {
-                    return i.name == item.name
+                    return i.title == item.title
+            
                 })
-                total = total + itemJson.price * item.quantity
+                total = total + (itemJson.price * item.quantity)
             })
             stripe.charges.create({
                 amount: total,

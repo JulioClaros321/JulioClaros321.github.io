@@ -34,7 +34,7 @@ function ready() {
             var storage = JSON.parse(sessionStorage.getItem("productsInCart"))
             
             for (i=0; i < storage.length; i++) {
-                var name = storage[i].name
+                var name = storage[i].title
                 var quantity = storage[i].quantity
 
                 ServerProcessingItems.push({
