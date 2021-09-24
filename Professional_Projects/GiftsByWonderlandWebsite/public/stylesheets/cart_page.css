@@ -211,7 +211,24 @@ html, body {
 }
 
 .btn_purchase {
-    display: block;
-    margin: 40px auto 80px auto;
-    font-size: 1.75em;
+    text-transform: uppercase;
+    font-size: 35px;
+    width: 300px;
+    border-radius: 80px;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid white;
+    background-color: white;
+    border: black solid 3px;
+    color: black; 
+    overflow: hidden;
+    transition: .3s;
+    margin-top: 6%;
+    margin-left: 350px;
+}
+
+.btn_purchase:hover {
+    border: blanchedalmond solid 3px;
+    color: blanchedalmond;
+    background-color: black;
 }
