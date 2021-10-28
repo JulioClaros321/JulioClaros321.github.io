@@ -22,7 +22,7 @@ app.get("/shopping_cart", function(req, res) {
         if (error) {
             res.status(500).end()
         } else {
-            res.render("shopping_cart.ejs", {
+            res.render("/Professional_Projects/GiftsByWonderlandWebsite/views/shopping_cart.ejs", {
                 stripePublicKey: stripePublicKey, 
                 items: JSON.parse(data)
 

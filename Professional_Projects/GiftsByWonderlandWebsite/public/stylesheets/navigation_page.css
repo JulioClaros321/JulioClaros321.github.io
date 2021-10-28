@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url(/images/mainpage_back.jpg);
+    background-image: url(/Professional_Projects/GiftsByWonderlandWebsite/public/images/mainpage_back.jpg);
     background-repeat: repeat;
     background-position: center center;
     background-size: 15%;
@@ -143,7 +143,7 @@ p {
     color: transparent;
     position: relative;
     overflow: hidden;
-    background-image: url(/images/gift_box_symbol.jpg);
+    background-image: url(/Professional_Projects/GiftsByWonderlandWebsite/public/images/gift_box_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -206,7 +206,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/images/apparel_symbol.jpg);
+    background-image: url(/Professional_Projects/GiftsByWonderlandWebsite/public/images/apparel_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -268,7 +268,7 @@ p {
     color: transparent; 
     position: relative;
     overflow: hidden;
-    background-image: url(/images/gift_shop_symbol.jpg);
+    background-image: url(/Professional_Projects/GiftsByWonderlandWebsite/public/images/gift_shop_symbol.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
