@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: Raleway;
     color: white;
+    text-align: center;
 }
 
 
@@ -23,7 +24,8 @@ body {
 }
 
 h1 {
-    font-size: 100px;
+    font-size: 600%;
+    text-align: center;
 
 }
 
@@ -48,6 +50,7 @@ p {
 
 p2 {
     font-family: Anton;
+    text-align: start;
     font-size: 25px;
     height: 30%;
     color: blanchedalmond;
@@ -144,11 +147,12 @@ p2 {
 /* Welcome Slide Front Page */
 
 .slide {
-    width: 550px;
-    height: 200px;
+    text-align: start;
+    width: 33%;
+    height: 25%;
     overflow: hidden;
-    position: relative;
-    margin: 9%;
+    position: absolute;
+    margin: 12%;
 }
 
 img {
@@ -187,7 +191,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30%;
+    margin-top: 60%;
     width: 75%;
     height: auto;
 }
