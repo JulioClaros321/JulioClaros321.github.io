@@ -149,11 +149,10 @@ p2 {
 .slide {
     text-align: start;
     width: 33%;
-    height: 25%;
+    height: 200px;
     overflow: hidden;
-    position: absolute;
-    margin: 12%;
-    border: red solid 1px;
+    position: relative;
+    margin-top: 8%;
 }
 
 img {
