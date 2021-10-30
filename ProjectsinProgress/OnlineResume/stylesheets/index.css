@@ -153,6 +153,7 @@ p2 {
     overflow: hidden;
     position: absolute;
     margin: 12%;
+    border: red solid 1px;
 }
 
 img {
