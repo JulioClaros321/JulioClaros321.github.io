@@ -15,8 +15,10 @@ body {
     align-items: center;
     background-image: url("/ProjectsinProgress/OnlineResume/images/background.jpg");
     background-repeat: no-repeat;
+    background-size:contain;
     background-color: rgba(19,20,24,255);
     height: auto;
+    width: auto;
     margin: 0;
 }
 
