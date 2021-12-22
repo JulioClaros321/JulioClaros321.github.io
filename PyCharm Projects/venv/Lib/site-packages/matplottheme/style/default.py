@@ -1,0 +1,822 @@
+'''
+Default Style
+=============
+
+'''
+
+
+class Style(object):
+
+    '''
+    This class is a collection of all painting methods provided by the 
+    default style of MatPlotTheme.
+
+    :param palette: The palette used for coloring.
+    '''
+
+    def __init__(self, palette):
+        self.set_palette(palette)
+
+    def set_palette(self, palette):
+        '''
+        Set the palette used for coloring.
+
+        :param palette: The palette used for coloring.
+        '''
+        self.palette = palette
+
+    def legend(self, ax, *args, **kwargs):
+        '''
+        Place a legend to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param legend_alpha: The opacity of background rectangle of the legend. Default is ``0.8``.
+        :return: The legend
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.legend`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.legend` for documentation on valid kwargs.
+        '''
+        # Set and get parameters.
+        kwargs.setdefault('frameon', True)
+        kwargs.setdefault('fancybox', True)
+
+        legend_alpha = kwargs.pop('legend_alpha', 0.8)
+
+        # Call MPL API
+        legend = ax.legend(*args, **kwargs)
+
+        if not legend:
+            raise ValueError("Legend is not generated. Do you add labels "
+                             "to the source data?")
+
+        # Draw the legend rectangle
+        rect = legend.get_frame()
+        rect.set_facecolor(self.palette.legend_bgcolor)
+        rect.set_alpha(legend_alpha)
+        rect.set_linewidth(0.0)
+
+        # Set legend text
+        texts = legend.texts
+        for t in texts:
+            t.set_color(self.palette.dark_frame)
+
+        return legend
+
+    def plot(self, ax, *args, **kwargs):
+        '''
+        Add a line plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A list of lines that were added.
+
+        A major modification made on the line plot is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.plot`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.plot` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+        result = self._plot_wrapper('plot', ax, *args, **kwargs)
+        if grid is not None:
+            self._grid('plot', ax, grid)
+
+        return result
+
+    def bar(self, ax, position, length, width=0.8, offset=None, *args, **kwargs):
+        '''
+        Add a bar plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param position: The position of each bar. Equivalent to ``left``
+                parameter of :meth:`matplotlib.axes.Axes.bar` when 
+                ``orientation`` is ``vertical``, or ``bottom`` when ``horizontal``.
+        :param length: The length of each bar. Equivalent to ``height``
+                parameter of :meth:`matplotlib.axes.Axes.bar` when 
+                ``orientation`` is ``vertical``, or ``width`` when ``horizontal``.
+        :param width: The width of each bar. Equivalent to ``width``
+                parameter of :meth:`matplotlib.axes.Axes.bar` when 
+                ``orientation`` is ``vertical``, or ``height`` when ``horizontal``.
+        :param offset: The start offset of each bar. Equivalent to ``bottom``
+                parameter of :meth:`matplotlib.axes.Axes.bar` when 
+                ``orientation`` is ``vertical``, or ``left`` when ``horizontal``.
+        :param grid: Add grid lines perpendicular to the bar orientation. Default is ``None``.
+                Value can be ``None``, ``'x'``, ``'y'``, ``'both'``, or ``'auto'``.
+        :param ticks: Remove the default positional labels and add custom
+                tick labels. Default is ``None``.
+        :param annotations: Add annotations to each bar. Default is ``None``.
+        :param annotations_loc: Control the position of annotations. Default is ``'out'``.
+                Value can be ``'out'``, ``'in'``, and ``'center'``.
+        :param annotations_margin: Control the margin size between annotations
+                and bars. The value is the portion of plot size. Default is ``0.025``.
+        :param reset_color_cycle: Reset the color cycle iterator of bars. Default is ``False``.
+        :return: :class:`matplotlib.patches.Rectangle` instances.
+
+        Parameters ``position``, ``length``, ``width``, and ``offset`` corresponds
+        to the first four parameters of :meth:`matplotlib.axes.Axes.bar`
+        and :meth:`matplotlib.axes.Axes.barh`. 
+
+        A major modification made on the bar plot is the change of color
+        cycle, which is used to color different bars. :class:`matplotlib.axes.Axes`
+        uses blue as default bar color. MatPlotTheme add a color cycle, which
+        is control by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current bar will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.bar`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.bar` for documentation on valid kwargs.
+        '''
+        # Set and get parameters
+        grid = kwargs.pop('grid', None)
+        ticks = kwargs.pop('ticks', None)
+        annotations = kwargs.pop('annotations', None)
+        annotations_loc = kwargs.pop('annotations_loc', 'out')
+        annotations_margin = kwargs.pop('annotations_margin', 0.025)
+        self._set_color_cycle_iter(ax, *args, **kwargs)
+        # Get current color from the color cycle if not defined by user.
+        if not 'color' in kwargs:
+            try:
+                color = next(ax._matplottheme_color_cycle_iter)
+            except StopIteration:
+                ax._matplottheme_color_cycle_iter = iter(
+                    self.palette.color_cycle)
+                color = next(ax._matplottheme_color_cycle_iter)
+            kwargs['color'] = color
+
+        kwargs.setdefault('edgecolor', self.palette.frame_bgcolor)
+
+        # Call MPL API
+        orientation = kwargs.get('orientation', 'vertical')
+        if orientation == 'horizontal':
+            kwargs.pop('orientation')
+            result = ax.barh(bottom=position, width=length, height=width,
+                             left=offset, *args, **kwargs)
+        else:
+            result = ax.bar(left=position, height=length, width=width,
+                            bottom=offset, *args, **kwargs)
+
+        # Set initial spines
+        self._set_spine(ax)
+
+        # Set grid
+        if grid is not None:
+            if grid == 'auto':
+                self._grid(
+                    'bar', ax, 'x' if orientation == 'horizontal' else 'y')
+            else:
+                self._grid('bar', ax, grid)
+
+        import collections
+        import numpy as np
+
+        # Horizontal bar post-process
+        if orientation == 'horizontal':
+            ax.tick_params(left='off')
+            ymin, ymax = ax.get_ylim()
+
+            # If any bar is negative, remove and add new y-axis
+            if not isinstance(length, collections.Iterable):
+                length = [length]
+            if any(l < 0 for l in length.tolist()):
+                ax.spines['left'].set_visible(False)
+                ax.vlines(x=0, ymin=ymin, ymax=ymax)
+
+            # Render the tick labels
+            middle = width / 2.0
+            if ticks is not None:
+                ax.set_yticks(np.array(position) + middle)
+                ax.set_yticklabels(ticks)
+
+            # Render the annotation labels
+            if annotations is not None:
+                xmin, xmax = ax.get_xlim()
+
+                # margin is the distance between bar end and the text
+                margin = np.log(xmax - xmin) * annotations_margin if \
+                    kwargs.get('log') else (xmax - xmin) * annotations_margin
+                if not isinstance(annotations, collections.Iterable):
+                    annotations = [annotations]
+                offset_pos = offset if offset is not None else [
+                    0] * len(position)
+                for y, l, o, a in zip(np.array(position) + middle, length, offset_pos, annotations):
+                    m = margin if l >= 0 else -1 * margin
+                    if annotations_loc == 'out':
+                        m = m
+                        align = 'left' if l >= 0 else 'right'
+                    elif annotations_loc == 'in':
+                        m = -m
+                        align = 'right' if l >= 0 else 'left'
+                    elif annotations_loc == 'center':
+                        m = -l / 2
+                        align = 'center'
+                    else:
+                        raise ValueError('Invalid annotation location: {loc}'
+                                         .format(loc=annotations_loc))
+                    ax.text(l + o + m, y, a,
+                            verticalalignment='center',
+                            horizontalalignment=align,
+                            color=self.palette.dark_frame)
+
+        # Vertical bar post-process
+        else:
+            ax.tick_params(bottom='off')
+            xmin, xmax = ax.get_xlim()
+
+            # If any bar is negative, remove and add new x-axis
+            if not isinstance(length, collections.Iterable):
+                length = [length]
+            if any(l < 0 for l in length.tolist()):
+                ax.spines['bottom'].set_visible(False)
+                ax.hlines(y=0, xmin=xmin, xmax=xmax)
+
+            # Render the tick labels
+            middle = width / 2.0
+            if ticks is not None:
+                ax.set_xticks(np.array(position) + middle)
+                ax.set_xticklabels(ticks)
+
+            # Render the annotation labels
+            if annotations is not None:
+                ymin, ymax = ax.get_ylim()
+
+                # margin is the distance between bar end and the text
+                margin = np.log(ymax - ymin) * annotations_margin if \
+                    kwargs.get('log') else (ymax - ymin) * annotations_margin
+                if not isinstance(annotations, collections.Iterable):
+                    annotations = [annotations]
+                offset_pos = offset if offset is not None else [
+                    0] * len(position)
+                for x, l, o, a in zip(np.array(position) + middle, length, offset_pos, annotations):
+                    m = margin if l >= 0 else -1 * margin
+                    if annotations_loc == 'out':
+                        m = m
+                        align = 'bottom' if l >= 0 else 'top'
+                    elif annotations_loc == 'in':
+                        m = -m
+                        align = 'top' if l >= 0 else 'bottom'
+                    elif annotations_loc == 'center':
+                        m = -l / 2
+                        align = 'center'
+                    else:
+                        raise ValueError('Invalid annotation location: {loc}'
+                                         .format(loc=annotations_loc))
+                    ax.text(x, l + o + m, a,
+                            verticalalignment=align,
+                            horizontalalignment='center',
+                            color=self.palette.dark_frame)
+
+        return result
+
+    def barh(self, ax, position, length, width=0.8, offset=None, *args, **kwargs):
+        '''
+        Add a horizontal bar plot to the input :class:`matplotlib.axes.Axes` object.
+
+        This method is a wrapper of ``self.bar()`` method. The parameter ``orientation``
+        is set to ``'horizontal'`` and all other parameters are passed to ``self.bar()``.
+        '''
+        kwargs['orientation'] = 'horizontal'
+        return self.bar(ax, position, length, width, offset, *args, **kwargs)
+
+    def scatter(self, ax, x, y, *args, **kwargs):
+        '''
+        Add a scatter plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param y: Input y-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: :class:`matplotlib.collections.PathCollection` objects.
+
+        A major modification made on the scatter plot is the change of color
+        cycle, which is used to color different bars. :class:`matplotlib.axes.Axes`
+        uses blue as default bar color. MatPlotTheme add a color cycle, which
+        is control by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current bar will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.scatter`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.scatter` for documentation on valid kwargs.
+        '''
+        self._set_color_cycle_iter(ax, *args, **kwargs)
+        # Get current color from the color cycle if not defined by user.
+        if not 'color' in kwargs:
+            try:
+                color = next(ax._matplottheme_color_cycle_iter)
+            except StopIteration:
+                ax._matplottheme_color_cycle_iter = iter(
+                    self.palette.color_cycle)
+                color = next(ax._matplottheme_color_cycle_iter)
+            kwargs.setdefault('facecolor', color)
+
+        # Set scatter point style
+        kwargs.setdefault('edgecolor', self.palette.dark_frame)
+        kwargs.setdefault('alpha', 0.6)
+        kwargs.setdefault('linewidth', 0.3)
+
+        grid = kwargs.pop('grid', None)
+
+        # Call MPL API
+        result = ax.scatter(x, y, *args, **kwargs)
+
+        # Set spines
+        self._set_spine(ax)
+
+        # Set grid
+        if grid is not None:
+            self._grid('scatter', ax, grid)
+
+        return result
+
+    def hist(self, ax, x, *args, **kwargs):
+        '''
+        Add a histogram plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input data.
+        :param grid: Add grid lines perpendicular to the bar orientation. Default is ``None``.
+                Value can be ``None``, ``'x'``, ``'y'``, ``'both'``, or ``'auto'``.
+        :param reset_color_cycle: Reset the color cycle iterator of bars. Default is ``False``.
+        :return: (n, bins, patches) or ([n0, n1, ...], bins, [patches0, patches1,...])
+
+        A major modification made on the histogram plot is the change of color
+        cycle, which is used to color different bars. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current bar will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.hist`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.hist` for documentation on valid kwargs.
+        '''
+        # Set and get parameters
+        grid = kwargs.pop('grid', None)
+        orientation = kwargs.get('orientation', 'vertical')
+        kwargs.setdefault('edgecolor', self.palette.frame_bgcolor)
+        self._set_color_cycle(ax, *args, **kwargs)
+
+        # Call MPL API
+        result = ax.hist(x, *args, **kwargs)
+
+        # Set spines
+        self._set_spine(ax)
+
+        # Set grid
+        if grid is not None:
+            if grid == 'auto':
+                self._grid(
+                    'hist', ax, 'x' if orientation == 'horizontal' else 'y')
+            else:
+                self._grid('hist', ax, grid)
+
+        return result
+
+    def boxplot(self, ax, x, *args, **kwargs):
+        '''
+        Add a box plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input data.
+        :param grid: Add grid lines perpendicular to the bar orientation. Default is ``None``.
+                Value can be ``None``, ``'x'``, ``'y'``, ``'both'``, or ``'auto'``.
+        :param ticks: Remove the default positional labels and add custom
+                tick labels. Default is ``None``.
+        :return: A dictionary. See :meth:`~matplotlib.axes.boxplot`.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.boxplot`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.boxplot` for documentation on valid kwargs.
+        '''
+        # Set and get parameters
+        ticks = kwargs.pop('ticks', None)
+        grid = kwargs.pop('grid', None)
+        kwargs.setdefault('widths', 0.2)
+
+        # Call MPL API
+        result = ax.boxplot(x, *args, **kwargs)
+
+        # Set spines
+        if kwargs.get('vert', True):
+            self._set_spine(ax, invisible=['top', 'right', 'bottom'])
+        else:
+            self._set_spine(ax, invisible=['top', 'right', 'left'])
+
+        # Set box color
+        import matplotlib.pyplot as plt
+        plt.setp(result['boxes'], color=self.palette.color_cycle[0])
+        plt.setp(
+            result['whiskers'], color=self.palette.color_cycle[0], linestyle='solid')
+        plt.setp(result['caps'], color=self.palette.color_cycle[0])
+        plt.setp(result['medians'], color=self.palette.color_cycle[1])
+        plt.setp(result['fliers'], color=self.palette.color_cycle[2],
+                 marker='_' if kwargs.get('vert', True) else '|')
+
+        # Set ticks
+        if ticks is not None:
+            if kwargs.get('vert', True):
+                ax.set_xticklabels(ticks)
+            else:
+                ax.set_yticklabels(ticks)
+
+        # Set grid
+        if grid is not None:
+            if grid == 'auto':
+                self._grid(
+                    'boxplot', ax, 'x' if not kwargs.get('vert', True) else 'y')
+            else:
+                self._grid('boxplot', ax, grid)
+
+        return result
+
+    def cohere(self, ax, x, y, *args, **kwargs):
+        '''
+        Add a coherence plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param y: Input y-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A tuple (Cxy, f), where f are the frequencies of the coherence vector.
+
+        A major modification made on the coherence plot is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.cohere`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.cohere` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        result = self._plot_wrapper('cohere', ax, x, y, *args, **kwargs)
+
+        ax.grid(False)
+        if grid is not None:
+            self._grid('plot', ax, grid)
+
+        return result
+
+    def csd(self, ax, x, y, *args, **kwargs):
+        '''
+        Add a cross-spectral density plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param y: Input y-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A tuple (Pxy, freqs). P is the cross spectrum (complex valued).
+
+        A major modification made on the cross-spectral density plot is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.csd`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.csd` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        result = self._plot_wrapper('csd', ax, x, y, *args, **kwargs)
+
+        ax.grid(False)
+        if grid is not None:
+            self._grid('plot', ax, grid)
+
+        return result
+
+    def psd(self, ax, x, *args, **kwargs):
+        '''
+        Add a power spectral density plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A tuple (Pxy, freqs). P is the cross spectrum (complex valued).
+
+        A major modification made on the power spectral density plot is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.psd`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.psd` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        result = self._plot_wrapper('psd', ax, x, *args, **kwargs)
+
+        ax.grid(False)
+        if grid is not None:
+            self._grid('plot', ax, grid)
+
+        return result
+
+    def errorbar(self, ax, x, y, *args, **kwargs):
+        '''
+        Add an errorbar plot to the input :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param y: Input y-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A tuple (plotline, caplines, barlinecols).
+
+        A major modification made on the errorbar plot is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.errorbar`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.errorbar` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        kwargs.setdefault('markeredgewidth', 1.5)
+        result = self._plot_wrapper('errorbar', ax, x, y, *args, **kwargs)
+
+        ax.grid(False)
+        if grid is not None:
+            self._grid('plot', ax, grid)
+
+        return result
+
+    def fill_between(self, ax, x, y1, *args, **kwargs):
+        '''
+        Add filled polygons to :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param x: Input x-data.
+        :param y1: Input y-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+
+        A major modification made on the filled polygons is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.fill_between`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.fill_between` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        kwargs.setdefault('edgecolor', self.palette.dark_frame)
+        self._set_color_cycle_iter(ax, *args, **kwargs)
+
+        # Get current color from the color cycle if not defined by user.
+        if not 'color' in kwargs:
+            try:
+                color = next(ax._matplottheme_color_cycle_iter)
+            except StopIteration:
+                ax._matplottheme_color_cycle_iter = iter(
+                    self.palette.color_cycle)
+                color = next(ax._matplottheme_color_cycle_iter)
+            kwargs.setdefault('facecolor', color)
+
+        # Call MPL API
+        result = ax.fill_between(x, y1, *args, **kwargs)
+
+        self._set_spine(ax)
+        if grid is not None:
+            self._grid('fill', ax, grid)
+
+        return result
+
+    def fill_betweenx(self, ax, y, x1, *args, **kwargs):
+        '''
+        Add filled polygons to :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param y: Input y-data.
+        :param x1: Input x-data.
+        :param grid: Add grid lines to the plot. Default is ``None``. Value
+                can be ``None``, ``'x'``, ``'y'``, or ``'both'``.
+        :param reset_color_cycle: Reset the color cycle iterator of lines. Default is ``False``.
+        :return: A tuple (plotline, caplines, barlinecols).
+
+        A major modification made on the filled polygons is the change of color
+        cycle, which is used to color different lines. :class:`matplotlib.axes.Axes`
+        uses an iterable cycle to generate colors for different lines. The
+        color cycle is changed by the :class:`~matplottheme.palette.default.Palette`
+        employed. ``reset_color_cycle`` can reset the iterable and the color
+        for current line will reset to the start of the cycle.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.fill_betweenx`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.fill_betweenx` for documentation on valid kwargs.
+        '''
+
+        grid = kwargs.pop('grid', None)
+
+        kwargs.setdefault('edgecolor', self.palette.dark_frame)
+        self._set_color_cycle_iter(ax, *args, **kwargs)
+
+        # Get current color from the color cycle if not defined by user.
+        if not 'color' in kwargs:
+            try:
+                color = next(ax._matplottheme_color_cycle_iter)
+            except StopIteration:
+                ax._matplottheme_color_cycle_iter = iter(
+                    self.palette.color_cycle)
+                color = next(ax._matplottheme_color_cycle_iter)
+            kwargs.setdefault('facecolor', color)
+
+        # Call MPL API
+        result = ax.fill_betweenx(y, x1, *args, **kwargs)
+
+        self._set_spine(ax)
+        if grid is not None:
+            self._grid('fill', ax, grid)
+
+        return result
+
+    def pcolormesh(self, ax, *args, **kwargs):
+        '''
+        Add a quadrilateral mesh to :class:`matplotlib.axes.Axes` object.
+
+        :param ax: The input axes object.
+        :param colorbar: Draw a color bar. Default is ``'vertical'``. Value can be
+                ``'vertical'``, ``'horizontal'``, and ``None``.
+        :param xticks: Remove the default positional labels and add custom
+                x-axis tick labels. Default is ``None``.
+        :param yticks: Remove the default positional labels and add custom
+                y-axis tick labels. Default is ``None``.
+        :return: A (:class:`matplotlib.colorbar.Colorbar`, :class:`matplotlib.collections.QuadMesh`) tuple.
+
+        All additional input parameters are passed to :meth:`~matplotlib.axes.pcolormesh`.
+
+        .. seealso::
+           :meth:`matplotlib.axes.pcolormesh` for documentation on valid kwargs.
+        '''
+
+        if len(args) == 3:
+            x = args[0]
+            y = args[1]
+            data = args[2]
+        elif len(args) == 1:
+            x = None
+            y = None
+            data = args[0]
+
+        kwargs.setdefault('edgecolor', self.palette.dark_frame)
+        kwargs.setdefault('linewidth', 0)
+        if (data.max() <= 0):
+            kwargs.setdefault('cmap', self.palette.cold_map)
+        elif (data.min() >= 0):
+            kwargs.setdefault('cmap', self.palette.warm_map)
+        else:
+            kwargs.setdefault('cmap', self.palette.cold_warm_map)
+
+        colorbar = kwargs.pop('colorbar', 'vertical')
+        xticks = kwargs.pop('xticks', None)
+        yticks = kwargs.pop('yticks', None)
+
+        # Call MPL API
+        result = ax.pcolormesh(*args, **kwargs)
+
+        import numpy as np
+        # Add tick labels
+        if xticks is not None:
+            if x is None:
+                xticks_pos = np.arange(0.5, data.shape[1] + 0.5)
+            else:
+                xticks_pos = []
+                for i in range(len(x)):
+                    xticks_pos.append((x[i + 1] - x[i]) / 2.0 + x[i])
+            ax.set_xticks(np.array(xticks_pos))
+            ax.set_xticklabels(xticks)
+        if yticks is not None:
+            if y is None:
+                yticks_pos = np.arange(0.5, data.shape[1] + 0.5)
+            else:
+                yticks_pos = []
+                for i in range(len(x)):
+                    yticks_pos.append((x[i + 1] - x[i]) / 2.0 + x[i])
+            ax.set_yticks(np.array(yticks_pos))
+            ax.set_yticklabels(yticks)
+
+        # Draw color bar
+        if colorbar is not None:
+            c = ax.get_figure().colorbar(result, orientation=colorbar)
+            c.outline.set_linewidth(0)
+            c.ax.axes.tick_params(right='off')
+        else:
+            c = None
+
+        self._set_spine(ax, invisible=['top', 'right', 'left', 'bottom'])
+        return (c, result)
+
+    def _plot_wrapper(self, plot_type, ax, *args, **kwargs):
+        self._set_color_cycle(ax, *args, **kwargs)
+        kwargs.setdefault('linewidth', 1.5)
+
+        # Call MPL API
+        if plot_type == 'plot':
+            result = ax.plot(*args, **kwargs)
+        elif plot_type == 'cohere':
+            result = ax.cohere(*args, **kwargs)
+        elif plot_type == 'csd':
+            result = ax.csd(*args, **kwargs)
+        elif plot_type == 'psd':
+            result = ax.psd(*args, **kwargs)
+        elif plot_type == 'errorbar':
+            result = ax.errorbar(*args, **kwargs)
+        else:
+            raise ValueError(
+                '{plot_type} is unavailable'.format(plot_type=plot_type))
+
+        # Set spines
+        self._set_spine(ax)
+
+        return result
+
+    def _grid(self, plot_type, ax, grid, *args, **kwargs):
+        # Call MPL API
+        if plot_type in ['bar', 'hist']:
+            ax.grid(axis=grid, color='white', linestyle='-', linewidth=0.5)
+        else:
+            ax.grid(axis=grid, color=self.palette.dark_frame,
+                    linestyle=':', linewidth=0.5)
+
+    def _set_color_cycle(self, ax, *args, **kwargs):
+        # If user decide to reset, or never set color cycle.
+        reset_color_cycle = kwargs.pop('reset_color_cycle', False)
+        if reset_color_cycle or \
+                not hasattr(ax, '_matplottheme_color_cycle'):
+            ax._matplottheme_color_cycle = self.palette.color_cycle
+            ax.set_color_cycle(self.palette.color_cycle)
+
+    def _set_color_cycle_iter(self, ax, *args, **kwargs):
+        reset_color_cycle = kwargs.pop('reset_color_cycle', False)
+        if reset_color_cycle or \
+                not hasattr(ax, '_matplottheme_color_cycle'):
+            ax._matplottheme_color_cycle = self.palette.color_cycle
+            ax._matplottheme_color_cycle_iter = iter(self.palette.color_cycle)
+
+    def _set_spine(self, ax, invisible=['top', 'right'], direction='out'):
+        all_spines = ['top', 'bottom', 'right', 'left']
+        try:
+            tick = dict()
+            for spine in invisible:
+                ax.spines[spine].set_visible(False)
+                tick[spine] = 'off'
+            for spine in set(all_spines).difference(set(invisible)):
+                ax.spines[spine].set_color(self.palette.dark_frame)
+            ax.tick_params(axis='both', direction=direction,
+                           colors=self.palette.dark_frame, **tick)
+        except KeyError:
+            pass

@@ -1,0 +1,50 @@
+Alaska	665384.04
+Texas	268596.46
+California	163696.32
+Montana	147039.71
+New Mexico	121590.3
+Arizona	113990.3
+Nevada	110571.82
+Colorado	104093.67
+Oregon	98378.54
+Wyoming	97813.01
+Michigan	96713.51
+Minnesota	86935.83
+Utah	84896.88
+Idaho	83568.95
+Kansas	82278.36
+Nebraska	77347.81
+South Dakota	77115.68
+Washington	71297.95
+North Dakota	70698.32
+Oklahoma	69898.87
+Missouri	69706.99
+Florida	65757.7
+Wisconsin	65496.38
+Georgia	59425.15
+Illinois	57913.55
+Iowa	56272.81
+New York	54554.98
+North Carolina	53819.16
+Arkansas	53178.55
+Alabama	52420.07
+Louisiana	52378.13
+Mississippi	48431.78
+Pennsylvania	46054.35
+Ohio	44825.58
+Virginia	42774.93
+Tennessee	42144.25
+Kentucky	40407.8
+Indiana	36419.55
+Maine	35379.74
+South Carolina	32020.49
+West Virginia	24230.04
+Maryland	12405.93
+Hawaii	10931.72
+Massachusetts	10554.39
+Vermont	9616.36
+New Hampshire	9349.16
+New Jersey	8722.58
+Connecticut	5543.41
+Delaware	2488.72
+Rhode Island	1544.89

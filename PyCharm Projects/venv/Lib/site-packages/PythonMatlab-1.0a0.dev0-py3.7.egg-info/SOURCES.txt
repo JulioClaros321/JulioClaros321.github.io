@@ -1,0 +1,10 @@
+DESCRIPTION.rst
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+PythonMatlab.egg-info/PKG-INFO
+PythonMatlab.egg-info/SOURCES.txt
+PythonMatlab.egg-info/dependency_links.txt
+PythonMatlab.egg-info/requires.txt
+PythonMatlab.egg-info/top_level.txt

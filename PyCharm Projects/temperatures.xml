@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<temperatures>
+    <temp_group date="2017-11">
+		<temp type="max">76</temp>
+		<temp type="avg">46</temp>
+		<temp type="min">22</temp>
+	</temp_group>
+	<temp_group date="2017-12">
+		<temp type="max">63</temp>
+		<temp type="avg">35</temp>
+		<temp type="min">12</temp>
+	</temp_group>
+	<temp_group date="2018-1">
+		<temp type="max">68</temp>
+		<temp type="avg">33</temp>
+		<temp type="min">5</temp>
+	</temp_group>
+	<temp_group date="2018-2">
+		<temp type="max">79</temp>
+		<temp type="avg">42</temp>
+		<temp type="min">12</temp>
+	</temp_group>
+	<temp_group date="2018-3">
+		<temp type="max">75</temp>
+		<temp type="avg">40</temp>
+		<temp type="min">23</temp>
+	</temp_group>
+	<temp_group date="2018-4">
+		<temp type="max">84</temp>
+		<temp type="avg">52</temp>
+		<temp type="min">30</temp>
+	</temp_group>
+	<temp_group date="2018-5">
+		<temp type="max">90</temp>
+		<temp type="avg">69</temp>
+		<temp type="min">39</temp>
+	</temp_group>
+	<temp_group date="2018-6">
+		<temp type="max">92</temp>
+		<temp type="avg">71</temp>
+		<temp type="min">50</temp>
+	</temp_group>
+	<temp_group date="2018-7">
+		<temp type="max">96</temp>
+		<temp type="avg">76</temp>
+		<temp type="min">55</temp>
+	</temp_group>
+	<temp_group date="2018-8">
+		<temp type="max">94</temp>
+		<temp type="avg">77</temp>
+		<temp type="min">56</temp>
+	</temp_group>
+	<temp_group date="2018-9">
+		<temp type="max">92</temp>
+		<temp type="avg">73</temp>
+		<temp type="min">55</temp>
+	</temp_group>
+	<temp_group date="2018-10">
+		<temp type="max">87</temp>
+		<temp type="avg">58</temp>
+		<temp type="min">31</temp>
+	</temp_group>
+</temperatures>

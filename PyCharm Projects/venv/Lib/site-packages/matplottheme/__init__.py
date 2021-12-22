@@ -1,0 +1,403 @@
+'''
+MatPlotTheme
+============
+
+:mod:`~matplottheme` is the starting point of MatPlotTheme library. It
+wraps the instances of :class:`~matplottheme.style.default.Style` and
+:class:`~matplottheme.palette.default.Palette`, and provides plotting
+interfaces to the users.
+'''
+
+__version__ = '0.1.2'
+__full_version__ = '0.1.2'
+
+from .palette.default import Palette as _DefaultPalette
+from .style.default import Style as _DefaultStyle
+
+_palette = _DefaultPalette()
+_style = _DefaultStyle(_palette)
+
+
+def legend(ax, *args, **kwargs):
+    '''
+    Place a legend to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``legend`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``legend`` method.
+
+    :param ax: The input axes object.
+    :return: The legend
+
+    All additional input parameters are passed to the wrapped ``legend`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.legend`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :class:`matplotlib.legend.Legend`.
+    '''
+    return _style.legend(ax, *args, **kwargs)
+
+
+def plot(ax, *args, **kwargs):
+    '''
+    Add a line plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``plot`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``plot`` method.
+
+    :param ax: The input axes object.
+    :return: A list of lines that were added.
+
+    All additional input parameters are passed to the wrapped ``plot`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.plot`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.plot`.
+    '''
+    return _style.plot(ax, *args, **kwargs)
+
+
+def bar(ax, *args, **kwargs):
+    '''
+    Add a bar plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``bar`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``bar`` method.
+
+    :param ax: The input axes object.
+    :return: :class:`matplotlib.patches.Rectangle` instances.
+
+    All additional input parameters are passed to the wrapped ``bar`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.bar`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.bar`.
+    '''
+    return _style.bar(ax, *args, **kwargs)
+
+
+def barh(ax, *args, **kwargs):
+    '''
+    Add a horizontal bar plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``barh`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``barh`` method.
+
+    :param ax: The input axes object.
+    :return: :class:`matplotlib.patches.Rectangle` instances.
+
+    All additional input parameters are passed to the wrapped ``barh`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.barh`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.barh`.
+    '''
+    return _style.barh(ax, *args, **kwargs)
+
+
+def scatter(ax, *args, **kwargs):
+    '''
+    Add a scatter plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``scatter`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``scatter`` method.
+
+    :param ax: The input axes object.
+    :return: :class:`matplotlib.collections.PathCollection` objects.
+
+    All additional input parameters are passed to the wrapped ``scatter`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.scatter`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.scatter`.
+    '''
+    return _style.scatter(ax, *args, **kwargs)
+
+
+def hist(ax, *args, **kwargs):
+    '''
+    Add a histogram plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``hist`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``histogram`` method.
+
+    :param ax: The input axes object.
+    :return: (n, bins, patches) or ([n0, n1, ...], bins, [patches0, patches1,...])
+
+    All additional input parameters are passed to the wrapped ``hist`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.hist`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.hist`.
+    '''
+    return _style.hist(ax, *args, **kwargs)
+
+
+def boxplot(ax, *args, **kwargs):
+    '''
+    Add a box plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``boxplot`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``boxplot`` method.
+
+    :param ax: The input axes object.
+    :return: A dictionary. See :meth:`~matplotlib.axes.boxplot`.
+
+    All additional input parameters are passed to the wrapped ``boxplot`` 
+    method.
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.boxplot`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.boxplot`.
+    '''
+    return _style.boxplot(ax, *args, **kwargs)
+
+
+def cohere(ax, *args, **kwargs):
+    '''
+    Add a coherence plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``cohere`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``cohere`` method.
+
+    :param ax: The input axes object.
+    :return: A tuple (Cxy, f), where f are the frequencies of the coherence vector.
+
+    All additional input parameters are passed to the wrapped ``cohere`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.cohere`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.cohere`.
+    '''
+    return _style.cohere(ax, *args, **kwargs)
+
+
+def csd(ax, *args, **kwargs):
+    '''
+    Add a cross-spectral density plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``csd`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``csd`` method.
+
+    :param ax: The input axes object.
+    :return: A tuple (Pxy, freqs). P is the cross spectrum (complex valued).
+
+    All additional input parameters are passed to the wrapped ``csd`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.csd`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.csd`.
+    '''
+    return _style.csd(ax, *args, **kwargs)
+
+
+def psd(ax, *args, **kwargs):
+    '''
+    Add a power spectral density plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``psd`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``psd`` method.
+
+    :param ax: The input axes object.
+    :return: A tuple (Pxx, freqs).
+
+    All additional input parameters are passed to the wrapped ``psd`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.psd`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.psd`.
+    '''
+    return _style.psd(ax, *args, **kwargs)
+
+
+def errorbar(ax, *args, **kwargs):
+    '''
+    Add an errorbar plot to the input :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``errorbar`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``errorbar`` method.
+
+    :param ax: The input axes object.
+    :return: A tuple (plotline, caplines, barlinecols).
+
+    All additional input parameters are passed to the wrapped ``errorbar`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.errorbar`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.errorbar`.
+    '''
+    return _style.errorbar(ax, *args, **kwargs)
+
+
+def fill_between(ax, *args, **kwargs):
+    '''
+    Add filled polygons to :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``fill_between`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``fill_between`` method.
+
+    :param ax: The input axes object.
+
+    All additional input parameters are passed to the wrapped ``fill_between`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.fill_between`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.fill_between`.
+    '''
+    return _style.fill_between(ax, *args, **kwargs)
+
+
+def fill_betweenx(ax, *args, **kwargs):
+    '''
+    Add filled polygons to :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``fill_betweenx`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``fill_betweenx`` method.
+
+    :param ax: The input axes object.
+
+    All additional input parameters are passed to the wrapped ``fill_betweenx`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.fill_betweenx`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.fill_betweenx`.
+    '''
+    return _style.fill_between(ax, *args, **kwargs)
+
+
+def pcolormesh(ax, *args, **kwargs):
+    '''
+    Add a quadrilateral mesh to :class:`matplotlib.axes.Axes` object.
+
+    This method is a wrapper of the ``pcolormesh`` method in the 
+    :class:`~matplottheme.style.default.Style` object which is used for
+    stylization. All parameters are directly handed over to the wrapped
+    ``pcolormesh`` method.
+
+    :param ax: The input axes object.
+
+    All additional input parameters are passed to the wrapped ``pcolormesh`` 
+    method. 
+
+    .. seealso::
+       :meth:`matplottheme.style.default.Style.pcolormesh`
+
+    .. note::
+       Different style may introduce different input parameters besides
+       those from :meth:`matplotlib.axes.Axes.pcolormesh`.
+    '''
+    return _style.pcolormesh(ax, *args, **kwargs)
+
+
+def set_theme(style_name=None, palette_name=None):
+    '''Set the global :class:`~matplottheme.style.default.Style` and 
+    :class:`~matplottheme.palette.default.Palette`.
+
+    This method sets the input :class:`~matplottheme.style.default.Style` and 
+    :class:`~matplottheme.palette.default.Palette` as default customization
+    options. All plotting methods in :mod:`matplottheme` employ these
+    options.
+
+    :param palette_name: The name of a :class:`~matplottheme.palette.default.Palette`.
+                         Input value can be None, ``'default'``, or ``'ggplot2'``.
+    :param   style_name: The name of a :class:`~matplottheme.style.default.Style`. 
+                         Input value can be None, ``'default'``, or ``'ggplot2'``.
+
+    '''
+    global _palette, _style
+    if palette_name:
+        if (palette_name.lower() == "default"):
+            _palette = _DefaultPalette()
+        elif (palette_name.lower() == "ggplot2"):
+            from .palette.ggplot2 import ggplot2Palette as _Palette
+            _palette = _Palette()
+        else:
+            raise ValueError("Palette {input_palette} is not available"
+                             .format(input_palette=palette_name))
+        if not style_name:
+            _style.set_palette(_palette)
+    if style_name:
+        if (style_name.lower() == "default"):
+            _style = _DefaultStyle(_palette)
+        elif (style_name.lower() == "ggplot2"):
+            from .style.ggplot2 import ggplot2Style as _Style
+            _style = _Style(_palette)
+        else:
+            raise ValueError("Style {input_style} is not available"
+                             .format(input_style=style_name))
