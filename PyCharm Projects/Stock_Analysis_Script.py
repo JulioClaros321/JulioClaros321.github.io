@@ -16,9 +16,7 @@ class Investor:
 
 
 def sense():
-    hehe = "ES5FN4MTEKBKBH2G"
-    lol = "150229 115695"
-
+    return true
 
 def get_portfolio():
     mystocks = rs.build_holdings()
@@ -44,11 +42,6 @@ def get_average_volume(stock_name):
 
 
 def login(robinhood_email, password):
-    totp = pyotp.TOTP("ES5FN4MTEKBKBH2G").now()
-    # print("Current OTP", totp)
-    rs.login(username="Julio.claros321@gmail.com",
-             password="IWe@rJeanShorts5",
-             mfa_code=totp)
 
     return True
 
