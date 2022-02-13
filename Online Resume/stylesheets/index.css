@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Changa:wght@700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: Raleway;
+  color: white;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: rgba(19, 20, 24, 255);
+  height: auto;
+  width: auto;
+  margin: 0;
+}
+
+a {
+  font-size: 200%;
+  color: #6e5494;
+  margin-bottom: 3%;
+}
+
+h1 {
+  font-size: 600%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+  color: white;
+}
+
+#problem {
+  color: red;
+}
+
+#solution {
+  color: greenyellow;
+}
+
+p {
+  font-size: 15px;
+  width: 65%;
+  text-align: center;
+}
+
+p2 {
+  font-family: Anton;
+  text-align: start;
+  font-size: 25px;
+  height: 30%;
+  color: blanchedalmond;
+}
+
+/* Navigation Bar */
+.navigation_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.nav_bar_redirect {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 1%;
+  margin-right: 1%;
+  width: 60%;
+}
+
+.nav_element {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  margin-left: 10px;
+  width: 20%;
+  height: 80%;
+}
+
+.button {
+  font-family: Anton;
+  text-transform: uppercase;
+  font-size: 19px;
+  width: 220px;
+  height: 60px;
+  border-radius: 80px;
+  line-height: 10px;
+  text-align: center;
+  border: 3px solid burlywood;
+  color: white;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  margin-left: 25px;
+  transition: 0.3s;
+  display: block;
+}
+
+.store_button::before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.5;
+  background: burlywood;
+  top: -100%;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.button::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: burlywood;
+  top: -100%;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+  transition-delay: 0.2s;
+}
+
+.button:hover {
+  color: black;
+}
+
+.button:hover::before {
+  top: 0;
+}
+
+.button:hover::after {
+  top: 0;
+}
+/* Navigation Bar */
+
+/* Welcome Slide Front Page */
+
+.slide {
+  text-align: start;
+  width: 33%;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 8%;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  animation: slide 12s infinite;
+  opacity: 0;
+}
+
+.slide > img:nth-child(2) {
+  animation-delay: 4s;
+}
+.slide > img:nth-child(3) {
+  animation-delay: 8s;
+}
+
+@keyframes slide {
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+/* Welcome Slide Front Page */
+
+/* Projects Listings DATA SCIENCE */
+
+.data_science_projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60%;
+  width: 75%;
+  height: auto;
+}
+
+.stock_recommendations_script {
+  margin-top: 10px;
+  border-top: white 1px dashed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+video {
+  margin-top: 20px;
+}
+
+.student_academic_dataset_analysis {
+  margin-top: 100px;
+  border-top: white 1px dashed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 800px;
+  opacity: 100%;
+}
+
+/* Projects Listings JAVASCRIPT */
+
+.javascript_projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40%;
+  width: 75%;
+  height: auto;
+}
+.gbw_website {
+  margin-top: 10px;
+  border-top: white dashed 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 800px;
+}
+
+/* Projects Listings JAVASCRIPT */
+
+/* Projects Listings JAVASCRIPT */
+
+.unity_projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40%;
+  width: 75%;
+  height: 1000px;
+}
+
+/* Projects Listings JAVASCRIPT */
