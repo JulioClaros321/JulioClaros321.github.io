@@ -69,7 +69,7 @@ class Bird:
 
         if self.img_count < self.ANIMATION_TIME:
             self.img = self.IMGS[0]
-        
+
 
 
 while True:
