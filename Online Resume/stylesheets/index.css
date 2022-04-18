@@ -37,6 +37,8 @@ h2 {
   color: white;
 }
 
+
+
 #problem {
   color: red;
 }
@@ -219,6 +221,125 @@ video {
   width: 100%;
   height: 800px;
   opacity: 100%;
+}
+
+.indeed_web_scrapper_analysis{
+  margin-top: 100px;
+  border-top: white 1px dashed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 800px;
+  opacity: 100%;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px; 
+  margin: 25px;
+  align-items: center;
+  font-family: Raleway;
+  color: black;
+}
+
+.text {
+  position: absolute;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#btn-1 {
+  background-color: black
+  ;
+}
+
+
+#btn-2 {
+  background-color: rgba(214,85,123,255);
+}
+
+#btn-3 {
+  background-color: rgba(221,121,145,255);
+}
+
+#btn-4 {
+  background-color: rgba(43,74,156,255);
+}
+
+
+.slider {
+  width: 700px;
+  height: 650px;
+  margin-left: 15px;
+  margin-top: 3%;
+  overflow: hidden;
+  border-radius: 10px;
+  border: black dashed 3px;
+
+}
+
+.slides {
+  display: flex;
+  width: 500%;
+  height: 650px;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide { 
+  width: 20%;
+  transition: 2s;
+}
+
+.slide img {
+  width: 700px;
+  height: 650px;
+}
+
+.navigation-manual{
+  position: absolute;
+  width: 700px;
+  margin-top: -50px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 6px solid black;
+  padding: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 80px;
+}
+
+.manual-btn:hover{
+  background: white;
+}
+
+#radio1:checked ~ .first{ 
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first{ 
+  margin-left: -20%;
+}
+
+#radio3:checked ~ .first{ 
+  margin-left: -40%;
+}
+
+#radio4:checked ~ .first{ 
+  margin-left: -60%;
 }
 
 /* Projects Listings JAVASCRIPT */
