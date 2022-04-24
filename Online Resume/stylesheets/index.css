@@ -45,6 +45,11 @@ h2 {
   color: greenyellow;
 }
 
+#visualization {
+  color: papayawhip;
+  border-bottom: dotted white 1px;
+}
+
 p {
   font-size: 15px;
   width: 65%;
@@ -155,7 +160,7 @@ p2 {
   margin-top: 8%;
 }
 
-img {
+.slide img {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -218,9 +223,124 @@ video {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 800px;
+  height: auto;
   opacity: 100%;
+  border-top: white 1px dashed;
 }
+
+.slide_show {
+  background-color: blanchedalmond;
+  width: 800px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.graphics {
+  display: flex;
+  width: 500%;
+  height: 600px;
+}
+
+.graphics input {
+  display: none;
+}
+
+.graphic {
+  width: 20%;
+  transition: 2s;
+}
+
+.graphic img {
+  width: 800px;
+  height: 500px;
+}
+
+.navigation-manual {
+  display: flex;
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 14px black solid;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 60px;
+}
+
+.manual-btn:hover{
+  background: black;
+}
+
+#radio1:checked~.first{
+  margin-left: 0;
+}
+
+#radio2:checked~.first{
+  margin-left: -20%;
+}
+
+#radio3:checked~.first{
+  margin-left: -40%;
+}
+
+#radio4:checked~.first{
+  margin-left: -60%;
+}
+
+#radio5:checked~.first{
+  margin-left: -80%;
+}
+
+.navigation-auto{
+  position: absolute;
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  margin-top: 460px;
+}
+
+.navigation-auto div{
+  border: 2px solid black;
+  padding: 1px;
+  border-radius: 10px;
+  transition: 1s;
+  margin-top: 60px;
+}
+
+.navigation-auto div:not(:last-child){
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+  background: black;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+  background: black;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+  background: black;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: black;
+}
+
+#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: black;
+}
+
+
 
 .indeed_web_scrapper_analysis {
   margin-top: 100px;
@@ -229,8 +349,112 @@ video {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 800px;
+  height: auto;
   opacity: 100%;
+}
+
+.indeed_slide_show {
+  background-color: blanchedalmond;
+  width: 800px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.indeed_graphics {
+  display: flex;
+  width: 500%;
+  height: 600px;
+}
+
+.indeed_graphics input {
+  display: none;
+}
+
+.indeed_graphic {
+  width: 20%;
+  transition: 2s;
+}
+
+.indeed_graphic img {
+  width: 800px;
+  height: 500px;
+}
+
+.indeed_navigation-manual {
+  display: flex;
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  justify-content: center;
+}
+
+.indeed_manual-btn {
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 14px black solid;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.indeed_manual-btn:not(:last-child) {
+  margin-right: 60px;
+}
+
+.indeed_manual-btn:hover{
+  background: black;
+}
+
+#indeed_radio1:checked~.first{
+  margin-left: 0;
+}
+
+#indeed_radio2:checked~.first{
+  margin-left: -20%;
+}
+
+#indeed_radio3:checked~.first{
+  margin-left: -40%;
+}
+
+#indeed_radio4:checked~.first{
+  margin-left: -60%;
+}
+
+.indeed_navigation-auto{
+  position: absolute;
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  margin-top: 460px;
+}
+
+.indeed_navigation-auto div{
+  border: 2px solid black;
+  padding: 1px;
+  border-radius: 10px;
+  transition: 1s;
+  margin-top: 60px;
+}
+
+.indeed_navigation-auto div:not(:last-child){
+  margin-right: 40px;
+}
+
+#indeed_radio1:checked ~ .indeed_navigation-auto .indeed_auto-btn1{
+  background: black;
+}
+
+#indeed_radio2:checked ~ .indeed_navigation-auto .indeed_auto-btn2{
+  background: black;
+}
+
+#indeed_radio3:checked ~ .indeed_navigation-auto .indeed_auto-btn3{
+  background: black;
+}
+
+#indeed_radio4:checked ~ .indeed_navigation-auto .indeed_auto-btn4{
+  background: black;
 }
 
 /* Projects Listings JAVASCRIPT */

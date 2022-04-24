@@ -27,5 +27,22 @@ function ready() {
         myFunction(tags, 2);
     });
 
+    var counter = 1;
+    setInterval(function(){
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 5){
+            counter = 1;
+        }
+    }, 5000);
+
+    var indeed_counter = 1;
+    setInterval(function(){
+        document.getElementById('indeed_radio' + indeed_counter).checked = true;
+        indeed_counter++;
+        if(indeed_counter > 4){
+            indeed_counter = 1;
+        }
+    }, 5000);
 
 }
