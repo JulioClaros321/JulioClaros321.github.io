@@ -1,15 +1,15 @@
 import datetime
 from datetime import datetime
 
-#entries = [("2015-01-01", "joe@signifyd.com", "PURCHASE"),
-    #("2015-02-01", "fraudster@fraud.com", "FRAUD_REPORT"),
-    #("2015-02-03", "fraudster@fraud.com", "FRAUD_REPORT"),
-    #("2015-02-10", "joe@signifyd.com", "PURCHASE"),
-    #("2015-02-14", "fraudster@fraud.com", "PURCHASE"),
-    #("2015-03-15", "joe@signifyd.com", "PURCHASE"),
-    #("2015-05-01", "joe@signifyd.com", "PURCHASE"),
-    #("2015-10-01", "joe@signifyd.com", "PURCHASE"),
-       #]
+entries = [("2015-01-01", "joe@signifyd.com", "PURCHASE"),
+    ("2015-02-01", "fraudster@fraud.com", "FRAUD_REPORT"),
+    ("2015-02-03", "fraudster@fraud.com", "FRAUD_REPORT"),
+    ("2015-02-10", "joe@signifyd.com", "PURCHASE"),
+    ("2015-02-14", "fraudster@fraud.com", "PURCHASE"),
+    ("2015-03-15", "joe@signifyd.com", "PURCHASE"),
+    ("2015-05-01", "joe@signifyd.com", "PURCHASE"),
+    ("2015-10-01", "joe@signifyd.com", "PURCHASE"),
+       ]
 
 
 def event_processor(entries):
