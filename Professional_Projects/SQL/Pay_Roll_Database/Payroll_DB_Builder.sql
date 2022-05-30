@@ -26,29 +26,33 @@ DROP TABLE IF EXISTS contact;
 CREATE TABLE contact (
 	employee_id INT NOT NULL PRIMARY KEY, 
     phone VARCHAR(15) NOT NULL,
-    email VARCHAR(30) NOT NULL,
-    website VARCHAR(30)
+    email VARCHAR(100) NOT NULL,
+    website VARCHAR(50)
 );
 
-DROP TABLE IF EXISTS job_profile; 
-CREATE TABLE job_profile (
-	job_id INT NOT NULL PRIMARY KEY, 
+DROP TABLE IF EXISTS job_description; 
+CREATE TABLE job_description (
+	job_id INT NOT NULL, 
     job_title VARCHAR(50) NOT NULL, 
-    job_description VARCHAR(500) NOT NULL,
-    start_date DATE NOT NULL,
+    job_description VARCHAR(400) NOT NULL
+);
+
+DROP TABLE IF EXISTS job_profile;
+CREATE TABLE job_profile (
+	employee_id INT NOT NULL PRIMARY KEY,
+	start_date DATE NOT NULL,
     years_company INT NOT NULL
 );
 
-
 DROP TABLE IF EXISTS department; 
 CREATE TABLE department (
-	department_id INT PRIMARY KEY,
+	department_id INT,
 	department VARCHAR(20) NOT NULL
 );
 
 DROP TABLE IF EXISTS payment_information;
 CREATE TABLE payment_information (
-	job_id INT PRIMARY KEY,
+	job_id INT,
     job_salary INT,
     benefits VARCHAR(20) NOT NULL,
     employment_status VARCHAR(20) NOT NULL
