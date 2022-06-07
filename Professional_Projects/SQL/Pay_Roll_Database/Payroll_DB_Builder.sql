@@ -41,7 +41,10 @@ DROP TABLE IF EXISTS job_profile;
 CREATE TABLE job_profile (
 	employee_id INT NOT NULL PRIMARY KEY,
 	start_date DATE NOT NULL,
-    years_company INT NOT NULL
+    years_company INT NOT NULL,
+    job_salary INT,
+    benefits VARCHAR(20) NOT NULL,
+    employment_status VARCHAR(20) NOT NULL
 );
 
 DROP TABLE IF EXISTS department; 
@@ -49,15 +52,6 @@ CREATE TABLE department (
 	department_id INT,
 	department VARCHAR(20) NOT NULL
 );
-
-DROP TABLE IF EXISTS payment_information;
-CREATE TABLE payment_information (
-	job_id INT,
-    job_salary INT,
-    benefits VARCHAR(20) NOT NULL,
-    employment_status VARCHAR(20) NOT NULL
-);
-
 
 
 
