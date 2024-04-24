@@ -1,0 +1,153 @@
+﻿software_category_id,software_name
+10,microsoft office suite
+10,google workspace
+10,slack
+10,zoom
+10,microsoft teams
+10,trello
+10,asana
+10,monday.com
+10,notion
+10,evernote
+10,adobe creative cloud
+10,autocad
+10,sketch
+10,figma
+10,invision
+10,jira
+10,confluence
+10,salesforce
+10,hubspot
+10,mailchimp
+10,zoho crm
+10,quickbooks
+10,sap erp
+10,oracle erp cloud
+10,tableau
+10,power bi
+10,google analytics
+10,matlab
+10,wrike
+10,basecamp
+10,github
+10,gitlab
+10,bitbucket
+10,docker
+10,kubernetes
+10,vmware
+10,oracle database
+10,mysql
+10,microsoft sql server
+10,postgresql
+10,redis
+10,mongodb
+10,adobe xd
+10,canva
+10,hootsuite
+10,sprout social
+10,buffer
+10,zendesk
+10,freshdesk
+10,dropbox
+10,google drive
+10,microsoft onedrive
+10,norton antivirus
+10,mcafee security
+10,cisco webex
+10,gotomeeting
+10,teamviewer
+10,sketchup
+10,autodesk revit
+10,ms office
+10,excel
+10,word
+20,aws
+20,microsoft azure
+20,google cloud
+20,ibm cloud
+20,oracle 
+20,salesforce
+20,vmware cloud
+20,alibaba cloud
+20,digitalocean
+20,heroku
+20,openstack
+20,kubernetes
+20,docker
+20,ansible
+20,terraform
+20,apache hadoop
+20,spark
+20,ec2
+20,google compute engine (gce)
+20,azure virtual machines
+20,aws lambda
+20,google cloud functions
+20,azure functions
+20,s3
+20,google cloud storage
+20,azure blob storage
+20,red hat openshift
+20,cloud foundry
+20,jenkins
+20,github actions
+20,gitlab ci/cd
+20,amazon rds
+20,google cloud sql
+20,azure sql database
+20,mongodb atlas
+20,cassandra
+20,redis
+20,elasticsearch
+20,rabbitmq
+20,apache kafka
+30,visual studio code (vs code)
+30,intellij idea
+30,eclipse
+30,pycharm
+30,visual studio
+30,atom
+30,sublime text
+30,netbeans
+30,android studio
+30,xcode
+30,webstorm
+30,phpstorm
+30,rubymine
+30,clion
+30,appcode
+30,rider
+30,goland
+30,komodo ide
+30,aptana studio
+30,code::blocks
+30,qt creator
+30,jupyter notebook
+30,spyder
+30,rstudio
+30,anaconda (spyder)
+30,light table
+30,brackets
+30,bluej
+30,thonny
+30,wing ide
+30,emacs
+30,vim
+30,coda (now nova)
+30,komodo edit
+30,monodevelop
+30,sharpdevelop
+30,codelite
+30,geany
+30,kdevelop
+30,labview
+30,greenfoot
+30,oracle jdeveloper
+30,aws cloud9
+30,zend studio
+30,slickedit
+30,eclipse che
+30,codewarrior
+30,borland c++ builder
+30,delphi
+30,scratch

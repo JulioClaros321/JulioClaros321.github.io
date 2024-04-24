@@ -1,0 +1,13 @@
+security_clearance,frequency,job_id
+public-trust,4,0
+public-trust-clearance,2,0
+secret-security,0,0
+secret-security-clearance,3,0
+secret-clearance,2,0
+top-secret,3,0
+top-secret-sci,3,0
+ts/sci,0,0
+ts-sci,13,0
+sap,0,0
+q-clearance,0,0
+l-clearance,0,0
