@@ -1,0 +1,16 @@
+education,frequency,job_id,state,report_year
+highschool-diploma,0,1,dmv,2024
+high-school-diploma,1,1,dmv,2024
+bachelors,9,1,dmv,2024
+bachelor-s-degree,35,1,dmv,2024
+bachelor's,0,1,dmv,2024
+bachelors',0,1,dmv,2024
+b.s,3,1,dmv,2024
+b.s.,3,1,dmv,2024
+masters,0,1,dmv,2024
+masters-degree,1,1,dmv,2024
+master's,0,1,dmv,2024
+masters',0,1,dmv,2024
+phd,1,1,dmv,2024
+ph.d,0,1,dmv,2024
+doctoral,0,1,dmv,2024

@@ -1,0 +1,13 @@
+security_clearance,frequency,job_id,state,report_year
+public-trust,4,1,dmv,2024
+public-trust-clearance,2,1,dmv,2024
+secret-security,0,1,dmv,2024
+secret-security-clearance,2,1,dmv,2024
+secret-clearance,7,1,dmv,2024
+top-secret,4,1,dmv,2024
+top-secret-sci,4,1,dmv,2024
+ts/sci,0,1,dmv,2024
+ts-sci,37,1,dmv,2024
+sap,1,1,dmv,2024
+q-clearance,0,1,dmv,2024
+l-clearance,0,1,dmv,2024

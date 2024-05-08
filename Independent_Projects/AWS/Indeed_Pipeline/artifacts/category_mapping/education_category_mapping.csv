@@ -1,15 +1,20 @@
 ﻿degree_category_id,degree
-1000,highschool
-2000,bachelor
-2000,bachelors
-2000,bachelor's
-2000,bachelors'
-2000,b.s
-2000,b.s.
-3000,master
-3000,masters
-3000,master's
-3000,masters'
-4000,phd
-4000,ph.d
-4000,doctoral
+highschool,highschool-diploma
+highschool,high-school-diploma
+associates degree,associates
+associates degree,associates-degree
+associates degree,associate-s-degree
+bachelors degree,bachelors
+bachelors degree,bachelor-s-degree
+bachelors degree,bachelor's
+bachelors degree,bachelors'
+bachelors degree,b.s
+bachelors degree,b.s.
+masters degree,masters
+masters degree,master-s-degree
+masters degree,masters-degree
+masters degree,master's
+masters degree,masters'
+phd,phd
+phd,ph.d
+phd,doctoral
