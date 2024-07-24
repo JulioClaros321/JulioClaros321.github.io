@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+    Creation of Indeed Pipeline and Artifacts Bucket
+Parameters:
+
+  DataBucketName:
+    Type: String
+    MinLength: "1"
+    Description: "Name of the S3 Head Start bucket in where data resides."
+  
+  ArtifactsDataBucketName: 
+    Type: String
+    MinLength: "1"
+    Description: "Name of the S3 Head Start bucket in where data resides."
+
+Resources: 
+
+  ### This Portion Creates the Buckets in S3 and uses the parameters above or naming convention
+  ### Head Start Bucket
+  DataBucket: 
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain 
+    Properties: 
+      BucketName: !Sub "${DataBucketName}"
+      VersioningConfiguration: 
+        Status: Enabled 
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  ### Head Start Artifacts Bucket
+  ArtifactsDataBucket: 
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain 
+    Properties: 
+      BucketName: !Sub "${ArtifactsDataBucketName}"
+      VersioningConfiguration: 
+        Status: Enabled 
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+
+Outputs:
+  DataBucket:
+    Value: !Ref DataBucket
+    Description: Bucket to be used to store data
+
+  ArtifactsDataBucket:
+    Value: !Ref ArtifactsDataBucket
+    Description: Bucket to be used to store artifacts 
+

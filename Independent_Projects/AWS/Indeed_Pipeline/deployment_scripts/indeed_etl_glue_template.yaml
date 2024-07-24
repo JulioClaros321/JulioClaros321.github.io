@@ -1,0 +1,544 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: 
+  "This Template Creates AWS ETL Glue Jobs/Crawers/Glue Roles/ For Indeed Pipeline"
+Parameters: 
+  EnvironmentName: 
+    Type: "String" 
+    MinLength: "3" 
+    Description: "Name of Environment. Will tag resources with environment name (dev, test, prod)"
+
+  DataBucketName: 
+    Type: "String" 
+    MinLength: "1" 
+    Description: "Name of S3 Bucket where data will reside"
+  
+  ArtifactBucketName: 
+    Type: "String" 
+    MinLength: "1" 
+    Description: "Name of S3 Bucket where data pipeline dependencies resides" 
+
+Resources:
+
+  IndeedPipelineGlueRole:
+    Type: "AWS::IAM::Role"
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - glue.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+
+        - PolicyName: indeed_s3_permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:GetObject"
+                  - "s3:PutObject"
+                  - "s3:ListBucket"
+                  - "s3:DeleteObject"
+                Resource:
+                  - !Sub "arn:aws:s3:::${DataBucketName}"
+                  - !Sub "arn:aws:s3:::${DataBucketName}/*"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}/*"
+
+        - PolicyName: indeed_glue_permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - glue:StartJobRun
+                  - glue:GetJobRun
+                  - glue:GetJobRuns
+                  - glue:GetJob
+                  - glue:GetJobs
+                  - glue:BatchStopJobRun
+                  - glue:GetCrawlers
+                  - glue:GetCrawlerMetrics
+                  - glue:GetCrawler
+                Resource:
+                  - !Sub "arn:aws:s3:::${DataBucketName}"
+                  - !Sub "arn:aws:s3:::${DataBucketName}/*"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}/*"
+
+        - PolicyName: indeed_cloudwatch_permissions
+          PolicyDocument: 
+            Version: 2012-10-17 
+            Statement: 
+              - Effect: Allow
+                Action:
+                - autoscaling:Describe*
+                - cloudwatch:*
+                - logs:*
+                - sns:*
+                - iam:GetPolicy
+                - iam:GetPolicyVersion
+                - iam:GetRole
+                - oam:ListSinks
+                Resource:
+                  - !Sub "arn:aws:s3:::${DataBucketName}"
+                  - !Sub "arn:aws:s3:::${DataBucketName}/*"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}"
+                  - !Sub "arn:aws:s3:::${ArtifactBucketName}/*"
+              - Effect: Allow
+                Action: iam:CreateServiceLinkedRole
+                Resource: arn:aws:iam::*:role/aws-service-role/events.amazonaws.com/AWSServiceRoleForCloudWatchEvents*
+                Condition:
+                  StringLike:
+                    iam:AWSServiceName: events.amazonaws.com
+              - Effect: Allow
+                Action:
+                - oam:ListAttachedLinks
+                Resource: arn:aws:oam:*:*:sink/*
+
+        - PolicyName: indeed_logging_permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: 
+                  - arn:aws:logs:*:*:*
+
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
+      Path: "/"
+
+    ### Indeed Glue Databases
+  
+  ### Glue Databases: Crawlers 
+  IndeedRawProcessedDatabase:
+    Type: "AWS::Glue::Database"
+    Properties:
+      DatabaseInput:
+        Description: "Indeed Raw Processed Database"
+        Name: !Sub "indeed_raw_processed_db_${EnvironmentName}"
+      CatalogId: !Ref AWS::AccountId
+
+  IndeedCleansedDatabase:
+    Type: "AWS::Glue::Database"
+    Properties:
+      DatabaseInput:
+        Description: "Indeed Cleansed Database"
+        Name: !Sub "indeed_cleansed_db_${EnvironmentName}"
+      CatalogId: !Ref AWS::AccountId
+
+  IndeedCuratedDatabase:
+    Type: "AWS::Glue::Database"
+    Properties:
+      DatabaseInput:
+        Description: "Indeed Curated Database"
+        Name: !Sub "indeed_curated_db_${EnvironmentName}"
+      CatalogId: !Ref AWS::AccountId
+
+
+  ### Indeed Glue Crawlers
+  IndeedRawProcessedCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "indeed_raw_processed_crawler_${EnvironmentName}"
+      Role: !GetAtt IndeedPipelineGlueRole.Arn
+      DatabaseName: !Ref IndeedRawProcessedDatabase
+      Targets:
+        S3Targets:
+          - Path: !Sub s3://${DataBucketName}/raw_processed/
+      SchemaChangePolicy:
+        UpdateBehavior: UPDATE_IN_DATABASE
+        DeleteBehavior: DEPRECATE_IN_DATABASE
+      Schedule:
+        ScheduleExpression: "cron(0 17 * * ? *)"
+
+  IndeedCleansedCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "indeed_cleansed_crawler_${EnvironmentName}"
+      Role: !GetAtt IndeedPipelineGlueRole.Arn
+      DatabaseName: !Ref IndeedCleansedDatabase
+      Targets:
+        S3Targets:
+          - Path: !Sub s3://${DataBucketName}/cleansed/
+      SchemaChangePolicy:
+        UpdateBehavior: UPDATE_IN_DATABASE
+        DeleteBehavior: DEPRECATE_IN_DATABASE
+      Schedule:
+        ScheduleExpression: "cron(0 17 * * ? *)"
+
+  IndeedCuratedCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "indeed_curated_crawler_${EnvironmentName}"
+      Role: !GetAtt IndeedPipelineGlueRole.Arn
+      DatabaseName: !Ref IndeedCuratedDatabase
+      Targets:
+        S3Targets:
+          - Path: !Sub s3://${DataBucketName}/curated/
+      SchemaChangePolicy:
+        UpdateBehavior: UPDATE_IN_DATABASE
+        DeleteBehavior: DEPRECATE_IN_DATABASE
+      Schedule:
+        ScheduleExpression: "cron(0 17 * * ? *)"
+  
+  ### Glue Job: Raw to Cleansed 
+  IndeedRawProcessedToCleansedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_raw_processed_to_cleansed_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/cleansed/indeed_raw_processed_to_cleansed_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/raw_processed/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/cleansed/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+  
+    ### Glue Job: Linking Table (job_id to job_title)
+  
+  IndeedJobInformationCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_job_information_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_job_information_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--RAW_PROCESSED" : !Sub "s3://${DataBucketName}/raw_processed/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/job_information/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Education Cleansed to Curated 
+  IndeedEducationCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_education_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_education_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/education/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/education/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Experience Cleansed to Curated 
+  IndeedExperienceCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_experience_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_experience_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/experience/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/experience/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Personality Cleansed to Curated 
+  IndeedPersonalityCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_personality_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_personality_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/personality_traits/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/personality_traits/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Prgramming Languages Cleansed to Curated 
+  IndeedProgrammingLanguagesCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_programming_languages_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_programming_languages_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/programming_languages/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/programming_languages/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Salary Cleansed to Curated 
+  IndeedSalaryCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_salary_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_salary_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/salary/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/salary/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"  
+
+  ### Glue Job: Security Clearance Cleansed to Curated 
+  IndeedSecurityClearanceCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_security_clearance_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_security_clearance_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/security_clearance/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/security_clearance/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Skillset Clearance Cleansed to Curated 
+  IndeedSkillsetCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_skillset_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_skillset_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/skillset/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/skillset/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+  ### Glue Job: Software Clearance Cleansed to Curated 
+  IndeedSoftwareCuratedJob:
+    Type: "AWS::Glue::Job"
+    Properties:
+      Role: !Ref IndeedPipelineGlueRole
+      Name: !Sub "indeed_software_curated_job_${EnvironmentName}"
+      Command: {
+        "Name" : "glueetl",
+        "PythonVersion" : "3",
+        "ScriptLocation": !Sub "s3://${ArtifactBucketName}/scripts/curated/indeed_software_curated_job.py"
+      }                                                                     
+      DefaultArguments: {
+          "--S3_INPUT" : !Sub "s3://${DataBucketName}/cleansed/software/",
+          "--S3_OUTPUT" : !Sub "s3://${DataBucketName}/curated/software/",
+          "--ARTIFACTS_BUCKET" : !Sub "s3://${ArtifactBucketName}/",
+          "--job-bookmark-option": "job-bookmark-enable",
+          "--enable-continuous-cloudwatch-log": "true",
+          "--continuous-log-logGroup": "/aws-glue/jobs/logs",
+          "--continuous-log-logStreamPrefix": !Sub "${EnvironmentName}",
+          "--enable-continuous-log-filter": "true",
+          "--enable-metrics": "true",
+          "--TempDir": !Sub "s3://${ArtifactBucketName}/temp"
+      }
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 0
+      GlueVersion: "4.0"
+      Description: "Process Indeed Raw Data"
+      WorkerType: "Standard"
+      NumberOfWorkers: 2
+      Timeout : 2880
+      Tags:
+        Environment: !Ref EnvironmentName
+        Project: "Data Processing"
+
+Outputs:
+
+  DataBucketName:
+    Value: !Ref DataBucketName
+    Description: Indeed Bucket Name 

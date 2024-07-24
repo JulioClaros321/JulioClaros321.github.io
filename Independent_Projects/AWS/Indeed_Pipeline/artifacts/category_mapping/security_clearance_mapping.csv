@@ -1,0 +1,13 @@
+clearance_category,security_clearance
+public trust,public-trust
+public trust,public-trust-clearance
+secret clearance,secret-security
+secret clearance,secret-security-clearance
+secret clearance,secret-clearance
+secret clearance,q-clearance
+top secret clearance,top-secret
+top secret clearance,top-secret-sci
+top secret clearance,ts/sci
+top secret clearance,ts-sci
+top secret clearance,l-clearance
+special access program,sap

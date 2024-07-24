@@ -1,151 +1,155 @@
-﻿skill_category_id,skills_lower
-technical,data analysis
-technical,coding
-technical,software development
-technical,project management
-technical,cybersecurity
-technical,cloud computing
-technical,artificial intelligence
-technical,ai
-technical,machine learning
-technical,database management
-technical,web development
-technical,mobile app development
-technical,ux/ui design
-technical,graphic design
-technical,video production
-technical,seo/sem marketing
-technical,digital marketing
-technical,content writing
-technical,editing and proofreading
-technical,technical writing
-technical,blockchain technology
-technical,devops practices
-technical,network architecture
-technical,data visualization
-technical,crm software
-technical,erp systems
-technical,financial modeling
-technical,accounting software
-technical,e-commerce management
-technical,social media management
-technical,email marketing
-technical,cloud security
-technical,quantum computing
-technical,robotics
-technical,3d printing
-technical,augmented reality
-technical,virtual reality
-technical,iot
-technical,bioinformatics
-technical,computational thinking
-technical,statistical analysis
-technical,cad software
-technical,digital photography
-technical,podcasting
-technical,data mining
-technical,ethical hacking
-technical,linux system administration
-technical,cloud infrastructure management
-technical,quality assurance testing
-technical,regulatory compliance
-technical,technical support and troubleshooting
-management,time management
-management,reliability
-management,professionalism
-management,responsibility
-management,punctuality
-management,dedication
-management,work-life balance
-management,stress management
-management,resilience
-management,persistence
-management,patience
-management,proactivity
-management,flexibility
-management,adaptability
-management,self-motivation
-management,goal setting
-management,self-discipline
-management,organization
-management,attention to detail
-management,critical thinking
-management,problem solving
-management,decision making
-management,creativity
-management,innovation
-management,entrepreneurship
-management,active listening
-management,verbal communication
-management,written communication
-management,public speaking
-management,interpersonal skills
-management,collaboration
-management,teamwork
-management,networking
-management,persuasion
-management,influence
-management,critical observation
-management,curiosity
-management,open-mindedness
-management,willingness to learn
-management,cultural awareness
-management,compassion
-management,trustworthiness
-management,honesty
-management,integrity
-management,ethical judgment
-management,gratitude
-management,positivity
-management,confidence
-management,humility
-management,tolerance
-management,diplomacy
-management,assertiveness
-management,mindfulness
-management,dispute mediation
-management,customer orientation
-management,service mindset
-management,personal branding
-management,personal finance management
-management,environmental awareness
-management,health and safety awareness
-management,digital literacy
-management,information literacy
-management,data privacy awareness
-management,cybersecurity basics
-management,e-literacy
-management,online collaboration tools
-management,remote work management
-management,time zone sensitivity
-management,virtual meeting etiquette
-management,cloud storage and sharing
-management,digital nomadism skills
-management,online research
-management,e-learning skills
-management,self-paced learning
-soft,strategic planning
-soft,leadership
-soft,team building
-soft,conflict resolution
-soft,performance management
-soft,budgeting
-soft,negotiation
-soft,delegation
-soft,communication
-soft,empathy
-soft,emotional intelligence
-soft,feedback giving
-soft,diversity and inclusion
-soft,change management
-soft,risk management
-soft,project planning
-soft,resource allocation
-soft,stakeholder management
-soft,sales strategy
-soft,marketing strategy
-soft,product management
-soft,operations management
-soft,customer service management
-soft,supply chain management
-soft,business development
+﻿skill_category,skillset
+technical skills,data-analysis
+technical skills,coding
+technical skills,software-development
+technical skills,project-management
+technical skills,cybersecurity
+technical skills,cloud-computing
+technical skills,artificial-intelligence
+technical skills,ai
+technical skills,machine-learning
+technical skills,database-management
+technical skills,web-development
+technical skills,mobile-app-development
+technical skills,ui-design
+technical skills,ux-design
+technical skills,graphic-design
+technical skills,video-production
+technical skills,seo/sem-marketing
+technical skills,digital-marketing
+technical skills,content-writing
+technical skills,editing
+technical skills,proofreading
+technical skills,technical-writing
+technical skills,blockchain
+technical skills,devops
+technical skills,network-architecture
+technical skills,data-visualization
+technical skills,crm-software
+technical skills,erp-systems
+technical skills,financial-modeling
+technical skills,accounting-software
+technical skills,e-commerce
+technical skills,social-media-management
+technical skills,email-marketing
+technical skills,cloud-security
+technical skills,quantum-computing
+technical skills,robotics
+technical skills,3d-printing
+technical skills,augmented-reality
+technical skills,virtual-reality
+technical skills,iot
+technical skills,bioinformatics
+technical skills,biometrics
+technical skills,computational-thinking
+technical skills,statistical-analysis
+technical skills,cad-software
+technical skills,digital-photography
+technical skills,podcasting
+technical skills,data-mining
+technical skills,ethical-hacking
+technical skills,linux-system-administration
+technical skills,cloud-infrastructure-management
+technical skills,quality-assurance-testing
+technical skills,regulatory-compliance
+technical skills,technical-support
+technical skills,troubleshooting
+management skills,time-management
+management skills,reliability
+management skills,professionalism
+management skills,responsibility
+management skills,punctuality
+management skills,dedication
+management skills,work-life-balance
+management skills,stress-management
+management skills,resilience
+management skills,persistence
+management skills,patience
+management skills,proactivity
+management skills,flexibility
+management skills,adaptability
+management skills,self-motivation
+management skills,goal-setting
+management skills,self-discipline
+management skills,organization
+management skills,attention-to-detail
+management skills,critical-thinking
+management skills,problem-solving
+management skills,decision-making
+management skills,creativity
+management skills,innovation
+management skills,entrepreneurship
+management skills,active-listening
+management skills,verbal-communication
+management skills,written-communication
+management skills,public-speaking
+management skills,interpersonal-skills
+management skills,collaboration
+management skills,teamwork
+management skills,networking
+management skills,persuasion
+management skills,influence
+management skills,critical-observation
+management skills,curiosity
+management skills,open-mindedness
+management skills,willingness-to-learn
+management skills,cultural-awareness
+management skills,compassion
+management skills,trustworthiness
+management skills,honesty
+management skills,integrity
+management skills,ethical-judgment
+management skills,gratitude
+management skills,positivity
+management skills,confidence
+management skills,humility
+management skills,tolerance
+management skills,diplomacy
+management skills,assertiveness
+management skills,mindfulness
+management skills,dispute-mediation
+management skills,customer-orientation
+management skills,service-mindset
+management skills,personal-branding
+management skills,personal-finance-management
+management skills,environmental-awareness
+management skills,health-and-safety-awareness
+management skills,digital-literacy
+management skills,information-literacy
+management skills,data-privacy-awareness
+management skills,cybersecurity-basics
+management skills,e-literacy
+management skills,online-collaboration-tools
+management skills,remote-work-management
+management skills,time-zone-sensitivity
+management skills,virtual-meeting-etiquette
+management skills,cloud-storage-and-sharing
+management skills,digital-nomadism-skills
+management skills,online-research
+management skills,e-learning-skills
+management skills,self-paced-learning
+soft skills,strategic-planning
+soft skills,leadership
+soft skills,team-building
+soft skills,conflict-resolution
+soft skills,performance-management
+soft skills,budgeting
+soft skills,negotiation
+soft skills,delegation
+soft skills,communication
+soft skills,empathy
+soft skills,emotional-intelligence
+soft skills,feedback-giving
+soft skills,diversity-and-inclusion
+soft skills,change-management
+soft skills,risk-management
+soft skills,project-planning
+soft skills,resource-allocation
+soft skills,stakeholder-management
+soft skills,sales-strategy
+soft skills,marketing-strategy
+soft skills,product-management
+soft skills,operations-management
+soft skills,customer-service-management
+soft skills,supply-chain-management
+soft skills,business-development

@@ -1,153 +1,151 @@
-﻿software_category_id,software_name
-10,microsoft office suite
-10,google workspace
-10,slack
-10,zoom
-10,microsoft teams
-10,trello
-10,asana
-10,monday.com
-10,notion
-10,evernote
-10,adobe creative cloud
-10,autocad
-10,sketch
-10,figma
-10,invision
-10,jira
-10,confluence
-10,salesforce
-10,hubspot
-10,mailchimp
-10,zoho crm
-10,quickbooks
-10,sap erp
-10,oracle erp cloud
-10,tableau
-10,power bi
-10,google analytics
-10,matlab
-10,wrike
-10,basecamp
-10,github
-10,gitlab
-10,bitbucket
-10,docker
-10,kubernetes
-10,vmware
-10,oracle database
-10,mysql
-10,microsoft sql server
-10,postgresql
-10,redis
-10,mongodb
-10,adobe xd
-10,canva
-10,hootsuite
-10,sprout social
-10,buffer
-10,zendesk
-10,freshdesk
-10,dropbox
-10,google drive
-10,microsoft onedrive
-10,norton antivirus
-10,mcafee security
-10,cisco webex
-10,gotomeeting
-10,teamviewer
-10,sketchup
-10,autodesk revit
-10,ms office
-10,excel
-10,word
-20,aws
-20,microsoft azure
-20,google cloud
-20,ibm cloud
-20,oracle 
-20,salesforce
-20,vmware cloud
-20,alibaba cloud
-20,digitalocean
-20,heroku
-20,openstack
-20,kubernetes
-20,docker
-20,ansible
-20,terraform
-20,apache hadoop
-20,spark
-20,ec2
-20,google compute engine (gce)
-20,azure virtual machines
-20,aws lambda
-20,google cloud functions
-20,azure functions
-20,s3
-20,google cloud storage
-20,azure blob storage
-20,red hat openshift
-20,cloud foundry
-20,jenkins
-20,github actions
-20,gitlab ci/cd
-20,amazon rds
-20,google cloud sql
-20,azure sql database
-20,mongodb atlas
-20,cassandra
-20,redis
-20,elasticsearch
-20,rabbitmq
-20,apache kafka
-30,visual studio code (vs code)
-30,intellij idea
-30,eclipse
-30,pycharm
-30,visual studio
-30,atom
-30,sublime text
-30,netbeans
-30,android studio
-30,xcode
-30,webstorm
-30,phpstorm
-30,rubymine
-30,clion
-30,appcode
-30,rider
-30,goland
-30,komodo ide
-30,aptana studio
-30,code::blocks
-30,qt creator
-30,jupyter notebook
-30,spyder
-30,rstudio
-30,anaconda (spyder)
-30,light table
-30,brackets
-30,bluej
-30,thonny
-30,wing ide
-30,emacs
-30,vim
-30,coda (now nova)
-30,komodo edit
-30,monodevelop
-30,sharpdevelop
-30,codelite
-30,geany
-30,kdevelop
-30,labview
-30,greenfoot
-30,oracle jdeveloper
-30,aws cloud9
-30,zend studio
-30,slickedit
-30,eclipse che
-30,codewarrior
-30,borland c++ builder
-30,delphi
-30,scratch
+﻿software_category,software_name
+cloud platforms,aws
+cloud platforms,azure
+cloud platforms,google-cloud
+cloud platforms,terraform
+cloud platforms,ibm-cloud
+cloud platforms,oracle
+cloud platforms,salesforce
+cloud platforms,vmware-cloud
+cloud platforms,alibaba-cloud
+cloud platforms,digitalocean
+cloud platforms,heroku
+cloud platforms,openstack
+cloud platforms,terraform
+cloud platforms,google-compute-engine
+cloud platforms,azure-virtual-machines
+cloud platforms,google-cloud-functions
+cloud platforms,google-cloud-storage
+cloud platforms,salesforce
+cloud platforms,sap-erp
+cloud platforms,red-hat-openshift
+cloud platforms,cloud-foundry
+development tools & ides,ansible
+development tools & ides,apache-hadoop
+development tools & ides,spark
+development tools & ides,pyspark
+development tools & ides,ec2
+development tools & ides,aws-lambda
+development tools & ides,azure-functions
+development tools & ides,s3
+development tools & ides,visual-studio
+development tools & ides,intellij-idea
+development tools & ides,eclipse
+development tools & ides,pycharm
+development tools & ides,visual-studio
+development tools & ides,atom
+development tools & ides,sublime-text
+development tools & ides,netbeans
+development tools & ides,android-studio
+development tools & ides,xcode
+development tools & ides,webstorm
+development tools & ides,phpstorm
+development tools & ides,rubymine
+development tools & ides,clion
+development tools & ides,appcode
+development tools & ides,rider
+development tools & ides,goland
+development tools & ides,komodo-ide
+development tools & ides,aptana-studio
+development tools & ides,code::blocks
+development tools & ides,qt-creator
+development tools & ides,jupyter-lab
+development tools & ides,jupyter-notebook
+development tools & ides,spyder
+development tools & ides,rstudio
+development tools & ides,anaconda
+development tools & ides,light-table
+development tools & ides,brackets
+development tools & ides,bluej
+development tools & ides,thonny
+development tools & ides,wing-ide
+development tools & ides,emacs
+development tools & ides,vim
+development tools & ides,coda
+development tools & ides,komodo-edit
+development tools & ides,monodevelop
+development tools & ides,sharpdevelop
+development tools & ides,codelite
+development tools & ides,geany
+development tools & ides,kdevelop
+development tools & ides,labview
+development tools & ides,greenfoot
+development tools & ides,oracle-jdeveloper
+development tools & ides,aws-cloud9
+development tools & ides,zend-studio
+development tools & ides,slickedit
+development tools & ides,eclipse-che
+development tools & ides,codewarrior
+development tools & ides,delphi
+development tools & ides,scratch
+development tools & ides,power-bi
+development tools & ides,google-analytics
+development tools & ides,matlab
+development tools & ides,tableau
+development tools & ides,github-actions
+development tools & ides,gitlab-ci/cd
+development tools & ides,amazon-rds
+development tools & ides,google-cloud-sql
+development tools & ides,azure-sql-database
+development tools & ides,mongodb-atlas
+development tools & ides,cassandra
+development tools & ides,redis
+development tools & ides,elasticsearch
+development tools & ides,rabbitmq
+development tools & ides,apache-kafka
+development tools & ides,docker
+development tools & ides,jenkins
+development tools & ides,kubernetes
+development tools & ides,vmware
+development tools & ides,oracle-database
+development tools & ides,mysql
+development tools & ides,microsoft-sql-server
+development tools & ides,postgresql
+development tools & ides,redis
+development tools & ides,mongodb
+development tools & ides,adobe
+development tools & ides,excel
+collaboration tools,microsoft-office-suite
+collaboration tools,google-workspace
+collaboration tools,slack
+collaboration tools,zoom
+collaboration tools,microsoft-teams
+collaboration tools,trello
+collaboration tools,asana
+collaboration tools,monday.com
+collaboration tools,notion
+collaboration tools,evernote
+collaboration tools,adobe-creative-cloud
+collaboration tools,autocad
+collaboration tools,sketch
+collaboration tools,figma
+collaboration tools,invision
+collaboration tools,jira
+collaboration tools,confluence
+collaboration tools,wrike
+collaboration tools,basecamp
+collaboration tools,github
+collaboration tools,gitlab
+collaboration tools,bitbucket
+collaboration tools,cisco-webex
+collaboration tools,gotomeeting
+collaboration tools,teamviewer
+collaboration tools,ms-office
+collaboration tools,microsoft-word
+support software,zendesk
+support software,freshdesk
+storage management,canva
+storage management,dropbox
+storage management,google-drive
+storage management,microsoft-onedrive
+security,norton-antivirus
+security,mcafee-security
+3d design,sketchup
+3d design,autodesk-revit
+marketing software,hubspot
+marketing software,mailchimp
+marketing software,zoho-crm
+marketing software,quickbooks
+marketing software,hootsuite
+marketing software,sprout-social
+marketing software,buffer

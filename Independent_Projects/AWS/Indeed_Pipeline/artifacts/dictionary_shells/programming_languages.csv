@@ -11,6 +11,8 @@ ruby
 kotlin
 rust
 sql
+nosql
+postgresql
 dart
 scala
 shell

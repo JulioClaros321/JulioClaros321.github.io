@@ -1,20 +1,20 @@
 ﻿degree_category_id,degree
 highschool,highschool-diploma
 highschool,high-school-diploma
-associates degree,associates
 associates degree,associates-degree
 associates degree,associate-s-degree
 bachelors degree,bachelors
+bachelors degree,bachelor-s
 bachelors degree,bachelor-s-degree
 bachelors degree,bachelor's
 bachelors degree,bachelors'
 bachelors degree,b.s
-bachelors degree,b.s.
 masters degree,masters
+masters degree,master-s
 masters degree,master-s-degree
-masters degree,masters-degree
 masters degree,master's
-masters degree,masters'
+phd,masters'
 phd,phd
 phd,ph.d
 phd,doctoral
+phd,doctorate

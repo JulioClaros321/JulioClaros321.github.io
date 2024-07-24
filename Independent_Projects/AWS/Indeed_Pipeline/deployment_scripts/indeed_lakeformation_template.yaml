@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 
+  "This Template Creates AWS Lakeformation Roles, Registers S3 Buckets, And Sets Data Admins"
+Parameters: 
+  EnvironmentName: 
+    Type: "String" 
+    MinLength: "3" 
+    Description: "Name of Environment. Will tag resources with environment name (dev, test, prod)"
+
+  DataBucketName: 
+    Type: "String" 
+    MinLength: "1" 
+    Description: "Name of S3 Bucket where data will reside"
+  
+  ArtifactBucketName: 
+    Type: "String" 
+    MinLength: "1" 
+    Description: "Name of S3 Bucket where data pipeline dependencies resides" 
+
+Resources:
+  # LakeFormation Admin Role
+  IndeedLakeformationAdminRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'lakeformation.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      Policies:
+        - PolicyName: 'LakeFormationAdminPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 's3:ListBucket'
+                  - 's3:GetObject'
+                  - 's3:PutObject'
+                Resource:
+                  - !Sub 'arn:aws:s3:::${DataBucketName}/*'
+              - Effect: 'Allow'
+                Action:
+                  - 'lakeformation:*'
+                Resource: '*'
+        - PolicyName: 'LakeFormationDataAdminPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 'lakeformation:GrantPermissions'
+                  - 'lakeformation:RevokePermissions'
+                Resource: '*'
+
+  # Registering the S3 bucket with Lake Formation
+  IndeedLakeFormationS3Resource:
+    Type: 'AWS::LakeFormation::Resource'
+    Properties:
+      ResourceArn: !Sub 'arn:aws:s3:::${DataBucketName}'
+      UseServiceLinkedRole: true
+
+  # Granting permissions on the S3 bucket
+  IndeedLakeFormationPermissions:
+    Type: 'AWS::LakeFormation::Permissions'
+    Properties:
+      DataLakePrincipal:
+        DataLakePrincipalIdentifier: !GetAtt IndeedLakeformationAdminRole.Arn
+      Resource:
+        DataLocationResource:
+          S3Resource: !Sub 'arn:aws:s3:::${DataBucketName}'
+      Permissions:
+        - 'ALL'
+
