@@ -192,7 +192,7 @@ p2 {
 
 /* Projects Listings DATA SCIENCE */
 
-.data_science_projects {
+.data_engineering_projects {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,6 +215,20 @@ video {
   margin-top: 20px;
 }
 
+.indeed_pipeline {
+  display: flex;
+  margin-top: 100px;
+  border-top: white 1px dashed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  opacity: 100%;
+  border-top: white 1px dashed;
+}
+
+
 .student_academic_dataset_analysis {
   display: flex;
   margin-top: 100px;
@@ -231,15 +245,16 @@ video {
 .slide_show {
   background-color: blanchedalmond;
   width: 800px;
-  height: auto;
+  height: 500px; /* Adjust height if necessary */
   border-radius: 10px;
   overflow: hidden;
+  position: relative; /* Added to create a positioning context */
 }
 
 .graphics {
   display: flex;
   width: 500%;
-  height: 600px;
+  height: 500%;
 }
 
 .graphics input {
@@ -259,26 +274,34 @@ video {
 .navigation-manual {
   display: flex;
   position: absolute;
-  width: 800px;
-  margin-top: -40px;
+  bottom: 10px; /* Adjust this value to position inside the slideshow */
+  width: 100%; /* Make it span the entire width of the slideshow */
   justify-content: center;
+  z-index: 10; /* Ensure it's above other content */
 }
 
 .manual-btn {
   border: 3px solid black;
-  padding: 10px;
-  border-radius: 14px black solid;
+  padding: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 1s;
+  background-color: white;
+  color: black;
+  width: 30px; /* Adjust based on design preference */
+  height: 30px; /* Adjust based on design preference */
+  margin: 0 5px; /* Space out buttons */
 }
+
+.manual-btn:hover {
+  background-color: black;
+}
+
 
 .manual-btn:not(:last-child) {
-  margin-right: 60px;
+  margin-right: 20px;
 }
 
-.manual-btn:hover{
-  background: black;
-}
+
 
 #radio1:checked~.first{
   margin-left: 0;
@@ -298,6 +321,10 @@ video {
 
 #radio5:checked~.first{
   margin-left: -80%;
+}
+
+#radio6:checked~.first{
+  margin-left: -100%;
 }
 
 .navigation-auto{
@@ -337,6 +364,10 @@ video {
 }
 
 #radio5:checked ~ .navigation-auto .auto-btn5{
+  background: black;
+}
+
+#radio6:checked ~ .navigation-auto .auto-btn6{
   background: black;
 }
 
@@ -459,7 +490,7 @@ video {
 
 /* Projects Listings JAVASCRIPT */
 
-.javascript_projects {
+.data_analytics_projects {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -479,9 +510,9 @@ video {
 
 /* Projects Listings JAVASCRIPT */
 
-/* Projects Listings JAVASCRIPT */
+/* Projects Listings Machine Learning + AI */
 
-.unity_projects {
+.ml_ai {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -490,4 +521,4 @@ video {
   height: 1000px;
 }
 
-/* Projects Listings JAVASCRIPT */
+/* Projects Listings Machine Learning + AI */

@@ -16,9 +16,9 @@
     
         <div class="nav_bar_redirect"> 
 
-            <button class="button data_science">Data Science Projects</button>
-            <button class="button javascript">Javascript Projects</button>
-            <button class="button unity">Unity Projects </button>
+            <button class="button data_science">Data Engineering</button>
+            <button class="button javascript">Data Analytics</button>
+            <button class="button unity">Machine Learning / AI</button>
 
         </div>
         
@@ -32,8 +32,57 @@
     </div>
 
 
-    <div class="data_science_projects">
-        <h1>DATA SCIENCE PROJECTS</h1>
+    <div class="data_engineering_projects">
+        <h1>DATA ENGINEERING PROJECTS</h1>
+        <div class="indeed_pipeline">
+            <h2>AWS Indeed Job Description Pipeline</h2>
+            <h3>AWS ETL - Pyspark - Quicksight</h3>
+            <a href="https://github.com/JulioClaros321/JulioClaros321.github.io/tree/master/Independent_Projects/AWS/Indeed_Pipeline">(GitHub Link To Pipeline Environment)</a>
+            <h3 id="problem">Data Preparation and Cleaning</h3>
+            <p>
+                Data collection yielded multiple Word documents containing Indeed job descriptions embedded in their HTML code (located in the raw folder). 
+                I utilized a Docker image to develop a preprocessing Lambda function, designed to extract the text of job descriptions from these raw HTML files. I then created
+                frequency dictionaries skeletons to capture popular programming languages, salary expectations, skillsets, technologies, education, and professional experience.
+                Regex patterns and Pyspark SQL allowed for groupings among these dictionaries. 
+            </p>
+            <h3 id="solution">Quicksight Dashboards</h3>
+            <p>
+                The following visualizations were generated showing popular skills related to 5 tech-related jobs and the job descriptions associated with their job title search
+                on Indeed.com
+            </p>
+            <h4 id="visualization">Visualizations</h4>
+            <div class="slide_show">
+                <div class="graphics">
+                    <input type="radio" name="radio-btn" id="radio1" class="manual-radio">
+                    <input type="radio" name="radio-btn" id="radio2" class="manual-radio">
+                    <input type="radio" name="radio-btn" id="radio3" class="manual-radio">
+                    <input type="radio" name="radio-btn" id="radio4" class="manual-radio">
+                    <input type="radio" name="radio-btn" id="radio5" class="manual-radio">
+                    <input type="radio" name="radio-btn" id="radio6" class="manual-radio">
+                    
+                    <div class="graphic first"><img src="images/indeed_requirement_dashboard_full.png" alt="Full dashboard"></div>
+                    <div class="graphic"><img src="images/indeed_requirment_dashboard_filtered.png" alt="Filtered dashboard"></div>
+                    <div class="graphic"><img src="images/indeed_requirment_dashboard_filtered_partial.png" alt="Partially filtered dashboard"></div>
+                    <div class="graphic"><img src="images/indeed_salary_expectations_dashboard_full.png" alt="Salary expectations full"></div>
+                    <div class="graphic"><img src="images/indeed_salary_expectation_dashboard_software_developer.png" alt="Salary for software developers"></div>
+                    <div class="graphic"><img src="images/indeed_salary_expectation_dashboard_filtered_partial.png" alt="Background"></div>
+                </div>
+
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                    <label for="radio5" class="manual-btn"></label>
+                    <label for="radio6" class="manual-btn"></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="data_analytics_projects">
+        <h1>DATA ANALYTICS PROJECTS</h1>
 
         <div class="stock_recommendations_script">
             <h2>Stock Recommendation Script (Python)</h2>
@@ -56,7 +105,7 @@
             </video>
 
         </div>
-
+        
         <div class="student_academic_dataset_analysis">
             <h2>Academic Student Dataset Analysis</h2>
             <h3>Python - OpenRefine - Excel</h3>
@@ -126,7 +175,7 @@
             </div>
             
         </div>  
-
+        
         <div class="indeed_web_scrapper_analysis">
             <h2>Indeed Job Result Page Scraper Analysis</h2>
             <a href="https://github.com/JulioClaros321/JulioClaros321.github.io/blob/master/Professional_Projects/Python/Indeed%20Job%20Posting%20Analysis/Indeed%20Job%20Analysis.ipynb">(GitHub Link To Script)</a>
@@ -184,29 +233,11 @@
 
             </div>
         </div>
-
-
-    </div>
-    <div class="javascript_projects">
-        <h1>JavaScript Projects</h1>
-        <div class="gbw_website">
-
-            <h2>Gifts By Wonderland Retail Site</h2>
-            <a href="https://github.com/JulioClaros321/JulioClaros321.github.io/tree/master/Professional_Projects/GiftsByWonderlandWebsite/public">(GitHub Link To Script)</a>
-            <h3 id="solution">Description</h3>
-            <p>E-commerce site framework, utilizing javascript, node.js, and stripe to manage online transactions.
-                Goods are customized by the user and stored in browser session storage, then displayed to user.
-                Backend and frontend development allow for excellent user experience in order to make purchases
-            </p>
-            <video controls width="100%" height="100%">
-                <source src="images/website.mp4">
-            </video>
-        </div>
         
     </div>
 
-    <div class="unity_projects">
-        <h1>Unity Projects</h1>
+    <div class="ml_ai">
+        <h1>Machine Learning / AI</h1>
 
     </div>
 </body>
