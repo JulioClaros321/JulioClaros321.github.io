@@ -31,7 +31,7 @@ function ready() {
     setInterval(function(){
         document.getElementById('radio' + counter).checked = true;
         counter++;
-        if(counter > 6){
+        if(counter > 12){
             counter = 1;
         }
     }, 5000);

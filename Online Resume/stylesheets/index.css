@@ -325,7 +325,32 @@ video {
 
 #radio6:checked~.first{
   margin-left: -100%;
+
 }
+#radio7:checked~.first{
+  margin-left: -120%;
+}
+
+#radio8:checked~.first{
+  margin-left: -140%;
+}
+
+#radio9:checked~.first{
+  margin-left: -160%;
+}
+
+#radio10:checked~.first{
+  margin-left: -180%;
+}
+
+#radio11:checked~.first{
+  margin-left: -200%;
+}
+
+#radio12:checked~.first{
+  margin-left: -220%;
+}
+
 
 .navigation-auto{
   position: absolute;
@@ -368,6 +393,30 @@ video {
 }
 
 #radio6:checked ~ .navigation-auto .auto-btn6{
+  background: black;
+}
+
+#radio7:checked ~ .navigation-auto .auto-btn1{
+  background: black;
+}
+
+#radio8:checked ~ .navigation-auto .auto-btn2{
+  background: black;
+}
+
+#radio9:checked ~ .navigation-auto .auto-btn3{
+  background: black;
+}
+
+#radio10:checked ~ .navigation-auto .auto-btn4{
+  background: black;
+}
+
+#radio11:checked ~ .navigation-auto .auto-btn5{
+  background: black;
+}
+
+#radio12:checked ~ .navigation-auto .auto-btn6{
   background: black;
 }
 
